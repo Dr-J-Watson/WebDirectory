@@ -22,11 +22,12 @@ class _PersonDetailsState extends State<PersonDetails> {
             Navigator.pop(context);
           },
         ),
+        backgroundColor: Colors.yellow,
       ),
       body: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(50.0),
             child: CircleAvatar(
               backgroundImage: widget.person.image != null
                   ? NetworkImage(widget.person.image!)
@@ -52,7 +53,8 @@ class _PersonDetailsState extends State<PersonDetails> {
             subtitle: Text(widget.person.numBureau),
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
           ),
-          ListTile(
+          GestureDetector(
+          child: ListTile(
             title: const Text('Email'),
             subtitle: Text(widget.person.email),
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
@@ -64,29 +66,30 @@ class _PersonDetailsState extends State<PersonDetails> {
               },
             ),
           ),
-          ListTile(
+          onTap: () {
+            String url = 'mailto: ${widget.person.email}';
+            launchUrl(Uri.parse(url));
+          },
+          ),
+          GestureDetector(
+            child: ListTile(
             title: const Text('Téléphone fixe'),
             subtitle: Text(widget.person.telFixe),
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
-            trailing: IconButton(
-              icon: const Icon(Icons.phone),
-              onPressed: () {
-                String url = 'tel: ${widget.person.telFixe}';
-                launchUrl(Uri.parse(url));
-              },
+            trailing: const Icon(Icons.phone),
             ),
           ),
-          ListTile(
-            trailing: IconButton(
-              icon: const Icon(Icons.phone),
-              onPressed: () {
-                String url = 'tel: ${widget.person.telMobile}';
-                launchUrl(Uri.parse(url));
-              },
+          GestureDetector(
+            child: ListTile(
+              title: const Text('Téléphone mobile'),
+              subtitle: Text(widget.person.telMobile),
+              shape: const Border(bottom: BorderSide(color: Colors.grey)),
+              trailing: const Icon(Icons.phone),
             ),
-            title: const Text('Téléphone mobile'),
-            subtitle: Text(widget.person.telMobile),
-            shape: const Border(bottom: BorderSide(color: Colors.grey)),
+            onTap: () {
+              String url = 'tel: ${widget.person.telMobile}';
+              launchUrl(Uri.parse(url));
+            },
           ),
         ],
       ),
