@@ -1,2 +1,2 @@
-# WebDirectory
+# WebDirectory CORE
 
