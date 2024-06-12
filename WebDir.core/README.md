@@ -1,12 +1,14 @@
 # WebDirectory CORE
 
 ## Comandes à faire :
-1 - `docker compose up -d` DEPUIS CE REPERTOIR `/WebDir.core`
+1 - Mettre en place le `.env` à partir de `.env.temp`
 
-2 - `docker exec -it php_appli /bin/bash`
+2 - `docker compose up -d` DEPUIS CE REPERTOIR `/WebDir.core`
 
-3 - `cd ../src`
+3 - `docker exec -it php_appli /bin/bash`
 
-4 - `composer install`
+4 - `cd ../src`
 
-5 - `exit`
+5 - `composer install`
+
+6 - `exit`
