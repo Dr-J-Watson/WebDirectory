@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SAÉ</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<main id="photo">
+
+</main>
+
+<script id="entreeTemplate" type="text/x-handlebars-template">
+	<section id="entree">
+		<img src="{{data.photo.url.href}}">
+            <h4>{{data.nom}} {{data.prenom}}</h4>
+		   <button id="home">Home</button>
+	 </section>
+  
+</script>
+
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script  src='./js/index.js' defer ></script>
+</body>
+</html>
