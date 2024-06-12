@@ -1,1 +1,4 @@
 .env
+appli/src/vendor
+appli/src/composer.lock
+appli/src/gift.db.conf.ini
