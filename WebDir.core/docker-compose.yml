@@ -14,10 +14,10 @@ services:
     restart: always
     # les variables d'environnement
     environment:
-      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DATABASE}
-      MYSQL_USER: ${USER}
-      MYSQL_PASSWORD: ${PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${DATABASE:-webdir}
+      MYSQL_USER: ${USER:-webdir}
+      MYSQL_PASSWORD: ${PASSWORD:-webdir}
     ports:
       - "64990:3306"
     volumes:
