@@ -54,23 +54,17 @@ class _PersonDetailsState extends State<PersonDetails> {
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
           ),
           GestureDetector(
-          child: ListTile(
-            title: const Text('Email'),
-            subtitle: Text(widget.person.email),
-            shape: const Border(bottom: BorderSide(color: Colors.grey)),
-            trailing: IconButton(
-              icon: const Icon(Icons.email),
-              onPressed: () {
-                String url = 'mailto: ${widget.person.email}';
-                launchUrl(Uri.parse(url));
-              },
+            child: ListTile(
+              title: const Text('Email'),
+              subtitle: Text(widget.person.email),
+              shape: const Border(bottom: BorderSide(color: Colors.grey)),
+              trailing: const Icon(Icons.mail),
             ),
-          ),
-          onTap: () {
-            String url = 'mailto: ${widget.person.email}';
-            launchUrl(Uri.parse(url));
-          },
-          ),
+            onTap: () {
+              String url = 'mailto: ${widget.person.email}';
+              launchUrl(Uri.parse(url));
+            },
+            ),
           GestureDetector(
             child: ListTile(
             title: const Text('Téléphone fixe'),
@@ -78,6 +72,10 @@ class _PersonDetailsState extends State<PersonDetails> {
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
             trailing: const Icon(Icons.phone),
             ),
+            onTap: () {
+              String url = 'tel: ${widget.person.telFixe}';
+              launchUrl(Uri.parse(url));
+            },
           ),
           GestureDetector(
             child: ListTile(
