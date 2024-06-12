@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webdirapp/screens/directory_master.dart';
 
 class WebDirApp extends StatefulWidget {
   const WebDirApp({super.key});
@@ -14,9 +15,10 @@ class _WebDirAppState extends State<WebDirApp> {
       title: 'Web Directory',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Ma liste de tâches'),
+          title: const Text('Annuaire Web'),
+          backgroundColor: Colors.yellow,
         ),
-        body: Center(
+        body: const Center(
           child: DirectoryMaster(),
         )
       ),
