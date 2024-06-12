@@ -1,6 +1,6 @@
 # WebDirectory CORE
 
-## Comande à faire :
+## Comandes à faire :
 1 - `docker compose up -d` DEPUIS CE REPERTOIR `/WebDir.core`
 
 2 - `docker exec -it php_appli /bin/bash`
