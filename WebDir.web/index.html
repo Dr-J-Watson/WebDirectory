@@ -6,17 +6,47 @@
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<main id="photo">
+<main id="main">
 
 </main>
 
+<script id="listEntreeTemplate" type="text/x-handlebars-template">
+	<section id="list">
+    {{#each entree}}
+      <h4>{{this.nom}} {{this.prenom}}</h4>
+      <img src="{{this.photo.url.href}}" alt="Voir entrée" data-photoID="{{this.id}}">
+    {{/each}}
+	 </section>
+</script>
+
 <script id="entreeTemplate" type="text/x-handlebars-template">
 	<section id="entree">
-		<img src="{{data.photo.url.href}}">
-            <h4>{{data.nom}} {{data.prenom}}</h4>
-		   <button id="home">Home</button>
+    {{#if data.photo.url.href}}
+		  <img src="{{data.photo.url.href}}">
+    {{/if}}
+    <h4>{{data.nom}} {{data.prenom}}</h4>
+    <p>Services :</p>
+    <ul>
+      {{#each data.services}}
+        <li>{{this.titre}}</li>
+      {{/each}}
+    <h5>Informations de contact</h5>
+    <p>{{data.email}}</p>
+    <p>{{data.telephone}}</p>
+	  <button id="home">Home</button>
 	 </section>
-  
+</script>
+
+<script id="serviceTemplate" type="text/x-handlebars-template">
+	<section id="service">
+    <h2>{{data.service}}</h2>
+    <p></p>
+      {{#each entree}}
+        {{this.nom}} {{this.prenom}}
+        <img src="{{this.photo.url.href}}" alt="Voir entrée" data-photoID="{{this.id}}">
+      {{/each}}
+    </section>p>
+	 </section>
 </script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
