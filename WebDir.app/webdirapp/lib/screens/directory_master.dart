@@ -35,15 +35,17 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
               return const Center(
                 child: Text('Erreur de chargement des données'),
               );
-            } else {
+            } else if (snapshot.hasData){
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return PersonPreview(
-                    person: snapshot.data![index],
-                    personProvider: personProvider,
-                  );
+                  Person person = snapshot.data![index];
+                  return PersonPreview(person: person, personProvider: personProvider,);
                 },
+              );
+            } else {
+              return const Center(
+                child: Text("Aucune donnée n'a été trouvée"),
               );
             }
           },
