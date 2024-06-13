@@ -1,0 +1,39 @@
+{% extends "squelette.twig" %}
+
+{% block content %}
+    <form action="{{ url_for('addPersonnePost') }}" method="post">
+        <label for="lastName">Nom: </label>
+        <input type="text" id="lastName" name="lastName" value="">
+
+        <label for="firstName">Prénom: </label>
+        <input type="text" id="firstName" name="firstName" value="">
+
+        <label for="numBureau"> Numéro de Bureau: </label>
+        <input type="text" id="numBureau" name="numBureau" value="" placeholder="404 ou 404B">
+
+        <label for="telFixe"> Fixe: </label>
+        <input type="tel" id="telFixe" name="telFixe" value="" placeholder="+33#########">
+
+        <label for="telMobile"> Mobile: </label>
+        <input type="tel" id="telMobile" name="telMobile" value="" placeholder="+33#########">
+
+        <label for="email"> Email: </label>
+        <input type="email" id="email" name="email" value="">
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}
+
+{# <div>
+        <form action="{{ url_for('addPersonnePost') }}" method="post">
+            <label for="lastName"> Nom: </label>
+            <input type="text" id="lastName" value="">
+
+            <label for="firstName"> Prénom: </label>
+            <input type="text" id="firstName" value="">
+
+
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div> #}
