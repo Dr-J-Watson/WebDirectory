@@ -5,7 +5,7 @@ namespace WebDir\core\appli\core\domain\entities;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class Personne extends Model{
+class Entree extends Model{
 
     use HasUuids;
 

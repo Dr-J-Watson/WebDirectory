@@ -7,11 +7,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use WebDir\core\appli\app\action\AbstractAction;
 
-class GetAddPersonneForm extends AbstractAction{
+class GetAddEntreeForm extends AbstractAction{
 
     function __invoke(Request $rq, Response $rs, $args): Response{
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'FormAddPersonne.twig');
+        return $view->render($rs, 'FormAddEntree.twig');
     }
 }

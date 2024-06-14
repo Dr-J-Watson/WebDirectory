@@ -5,14 +5,14 @@ namespace WebDir\core\appli\app\action;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use WebDir\core\appli\app\action\AbstractAction;
-use WebDir\core\appli\core\services\personne\PersonneService;
+use WebDir\core\appli\core\services\personne\EntreeService;
 
-class PostAddPersonne extends AbstractAction{
+class PostAddEntree extends AbstractAction{
 
-    private PersonneService $personneService;
+    private EntreeService $personneService;
 
     public function __construct(){
-        $this->personneService = new PersonneService();
+        $this->personneService = new EntreeService();
     }
     function __invoke(Request $rq, Response $rs, $args): Response{
         try{
