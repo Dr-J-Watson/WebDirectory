@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use WebDire\core\api\infrastructure\Eloquent;
+use WebDir\core\api\infrastructure\Eloquent;
 
 require_once __DIR__ . '/../src/vendor/autoload.php';
 
