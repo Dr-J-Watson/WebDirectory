@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:webdirapp/screens/person_preview.dart';
-import 'package:webdirapp/screens/person_provider.dart';
-import 'package:webdirapp/models/person.dart';
+import 'package:webdirapp/screens/entry_preview.dart';
+import 'package:webdirapp/screens/entry_provider.dart';
+import 'package:webdirapp/models/entry.dart';
 
 class DirectoryMaster extends StatefulWidget {
   const DirectoryMaster({super.key});
@@ -12,8 +12,11 @@ class DirectoryMaster extends StatefulWidget {
 }
 
 class _DirectoryMasterState extends State<DirectoryMaster> {
-  late Future<List<Person>> persons;
-  final PersonProvider personProvider = PersonProvider();
+  late Future<List<Entry>> entries;
+  final EntryProvider entryProvider = EntryProvider();
+  bool sortOrder = true;
+  String? filterValue = "none";
+  
 
   @override
   void initState() {
@@ -23,10 +26,79 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<PersonProvider>(builder: (context, personProvider, child) {
+      appBar: AppBar(
+        
+        title: const TextField(
+          decoration: InputDecoration(
+            icon: Icon(Icons.search),
+            hintText: 'Rechercher un contact',
+          ),
+        ),
+        actions: [
+          IconButton(
+          icon: const Icon(Icons.sort_by_alpha),
+          onPressed: () {
+            setState(() {
+              sortOrder = !sortOrder;
+            });
+          },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:IconButton(
+              icon: const Icon(Icons.filter_alt),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text('Filtrer par Service/Département'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          DropdownButton(
+                            value: filterValue,
+                            items: const [
+                              DropdownMenuItem(
+                                value: 'none',
+                                child: Text('Aucun'),
+                              ),
+                            ], 
+                            onChanged: (String? value) {
+                              setState(() {
+                                filterValue = value;
+                              });
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child:ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Valider'),
+                          ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                );
+              },
+            ),
+          ),
+        ],
+        backgroundColor: Colors.white,
+        shape: const Border(
+          bottom: BorderSide(
+            color: Colors.black,
+          )
+        ),
+      ),
+      body: Consumer<EntryProvider>(builder: (context, EntryProvider, child) {
         return FutureBuilder(
-          future:personProvider.getPersons(),
-          builder: (BuildContext context, AsyncSnapshot<List<Person>> snapshot) {
+          future:EntryProvider.getentries(sortOrder),
+          builder: (BuildContext context, AsyncSnapshot<List<Entry>> snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
@@ -39,8 +111,8 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  Person person = snapshot.data![index];
-                  return PersonPreview(person: person, personProvider: personProvider,);
+                  Entry entry = snapshot.data![index];
+                  return EntryPreview(entry: entry, entryProvider: EntryProvider,);
                 },
               );
             } else {

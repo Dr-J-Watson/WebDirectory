@@ -17,6 +17,12 @@ class _WebDirAppState extends State<WebDirApp> {
         appBar: AppBar(
           title: const Text('Annuaire Web'),
           backgroundColor: Colors.yellow,
+          shape: const Border(
+            bottom: BorderSide(
+              color: Colors.black,
+              width: 2
+              )
+            ),
         ),
         body: const Center(
           child: DirectoryMaster(),
