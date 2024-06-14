@@ -1,4 +1,4 @@
-CREATE TABLE personne (
+CREATE TABLE entree (
   uuid VARCHAR(255) NOT NULL,
   lastName VARCHAR(255) NOT NULL,
   firstName VARCHAR(255) NOT NULL,
@@ -18,11 +18,11 @@ CREATE TABLE department (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE personne_department (
-  personne_id VARCHAR(255) NOT NULL,
+CREATE TABLE entree_department (
+  entree_id VARCHAR(255) NOT NULL,
   department_id INT(11) NOT NULL,
-  PRIMARY KEY (personne_id, department_id),
-  KEY FK_personne_department_department (department_id),
-  CONSTRAINT FK_personne_department_department FOREIGN KEY (department_id) REFERENCES department (id),
-  CONSTRAINT FK_personne_department_personne FOREIGN KEY (personne_id) REFERENCES personne (uuid)
+  PRIMARY KEY (entree_id, department_id),
+  KEY FK_entree_department_department (department_id),
+  CONSTRAINT FK_entree_department_department FOREIGN KEY (department_id) REFERENCES department (id),
+  CONSTRAINT FK_entree_department_entree FOREIGN KEY (entree_id) REFERENCES entree (uuid)
 );

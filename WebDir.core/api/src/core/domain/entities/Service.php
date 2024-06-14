@@ -13,10 +13,10 @@ class Departement extends Model{
     public $timestamps = false;
     public $incrementing = true;
 
-    protected $fillable = ['id', 'nom'];
+    protected $fillable = ['id', 'nom', 'etage', 'description'];
 
-    public function personne(){
-        return $this->belongsToMany('WebDir\core\appli\core\domain\entities\Personne', 'personne_departement', 'departement', 'personne',
+    public function entree(){
+        return $this->belongsToMany('WebDir\core\api\core\domain\entities\Entree', 'entree_departement',
         'id','uuid');
     }
 }
