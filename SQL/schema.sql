@@ -13,6 +13,8 @@ CREATE TABLE personne (
 CREATE TABLE department (
   id INT(11) NOT NULL AUTO_INCREMENT,
   nom VARCHAR(255) NOT NULL,
+  etage INT(11) NOT NULL,
+  description VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (id)
 );
 
