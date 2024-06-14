@@ -2,7 +2,7 @@
 
 namespace WebDir\core\appli\core\services\personne;
 
-class PersonneServiceBadDataException extends \Exception{
+class EntreeServiceBadDataException extends \Exception{
 
     public function __construct($message){
         parent::__construct($message);

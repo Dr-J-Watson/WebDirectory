@@ -2,12 +2,12 @@
 
 namespace WebDir\core\appli\core\services\personne;
 
-use WebDir\core\appli\core\domain\entities\Personne;
+use WebDir\core\appli\core\domain\entities\Entree;
 
-class PersonneService implements PersonneServiceInterface{
+class EntreeService implements EntreeServiceInterface{
 
-    public function addPersonne(array $personne){
-        $newPersonne = new Personne();
+    public function addEntree(array $personne): void{
+        $newPersonne = new Entree();
         $newPersonne->lastName = $personne['lastName'];
         $newPersonne->firstName  = $personne['firstName'];
         $newPersonne->numBureau = $personne['numBureau'];
