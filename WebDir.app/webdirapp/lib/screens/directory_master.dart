@@ -16,6 +16,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
   final EntryProvider entryProvider = EntryProvider();
   bool sortOrder = true;
   String? filterValue = "none";
+  String? researchValue;
   
 
   @override
@@ -95,9 +96,9 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
           )
         ),
       ),
-      body: Consumer<EntryProvider>(builder: (context, EntryProvider, child) {
+      body: Consumer<EntryProvider>(builder: (context, entryProvider, child) {
         return FutureBuilder(
-          future:EntryProvider.getentries(sortOrder),
+          future: entryProvider.getEntries(sortOrder),
           builder: (BuildContext context, AsyncSnapshot<List<Entry>> snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -112,7 +113,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (BuildContext context, int index) {
                   Entry entry = snapshot.data![index];
-                  return EntryPreview(entry: entry, entryProvider: EntryProvider,);
+                  return EntryPreview(entry: entry, entryProvider: entryProvider,);
                 },
               );
             } else {

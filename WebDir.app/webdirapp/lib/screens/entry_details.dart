@@ -44,21 +44,28 @@ class _EntryDetailsState extends State<EntryDetails> {
                   : null,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('${widget.entry.firstName} ${widget.entry.lastName.toUpperCase()}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('${widget.entry.firstName} ${widget.entry.lastName.toUpperCase()}',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          Text('${widget.entry.function}',
-            style: const TextStyle(
-              fontSize: 15,
-            ),
+                Text(widget.entry.function,
+                  style: const TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            )
           ),
           ListTile(
             title: const Text('Numéro de bureau'),
@@ -85,28 +92,33 @@ class _EntryDetailsState extends State<EntryDetails> {
               launchUrl(Uri.parse(url));
             },
             ),
+          
           GestureDetector(
             child: ListTile(
-            title: const Text('Téléphone fixe'),
-            subtitle: Text(widget.entry.telFixe),
-            shape: const Border(bottom: BorderSide(color: Colors.grey)),
-            trailing: const Icon(Icons.phone),
+              title: const Text('Téléphone mobile'),
+              subtitle: Text(widget.entry.telMobile ?? 'Non renseigné'),
+              shape: const Border(bottom: BorderSide(color: Colors.grey)),
+              trailing: widget.entry.telMobile != null ? const Icon(Icons.phone) : null,
             ),
             onTap: () {
-              String url = 'tel: ${widget.entry.telFixe}';
+              if(widget.entry.telMobile != null) {
+              String url = 'tel: ${widget.entry.telMobile}';
               launchUrl(Uri.parse(url));
+              }
             },
           ),
           GestureDetector(
             child: ListTile(
-              title: const Text('Téléphone mobile'),
-              subtitle: Text(widget.entry.telMobile),
-              shape: const Border(bottom: BorderSide(color: Colors.grey)),
-              trailing: const Icon(Icons.phone),
+            title: const Text('Téléphone fixe'),
+            subtitle: Text(widget.entry.telFixe ?? 'Non renseigné'),
+            shape: const Border(bottom: BorderSide(color: Colors.grey)),
+            trailing: widget.entry.telFixe != null ? const Icon(Icons.phone) : null,
             ),
             onTap: () {
-              String url = 'tel: ${widget.entry.telMobile}';
-              launchUrl(Uri.parse(url));
+              if(widget.entry.telFixe != null){
+                String url = 'tel: ${widget.entry.telFixe}';
+                launchUrl(Uri.parse(url));
+              } 
             },
           ),
         ],
