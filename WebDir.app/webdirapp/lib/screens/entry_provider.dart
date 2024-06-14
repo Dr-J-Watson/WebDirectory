@@ -8,14 +8,15 @@ import 'package:http/http.dart' as http;
 class EntryProvider extends ChangeNotifier {
   final List<Entry> _entries = [];
 
-  Future<List<Entry>> getEntries(bool sortOrder) async{
-    await _fetchEntries(sortOrder);
+  Future<List<Entry>> getEntries(bool sortOrder, String? researchValue) async{
+    await _fetchEntries(sortOrder,researchValue);
     return _entries;
   }
 
-  Future<void> _fetchEntries(bool sortOrder) async {
+  Future<void> _fetchEntries(bool sortOrder, String? researchValue) async {
     _entries.clear();
-    final response = await http.get(Uri.parse('http://docketu.iutnc.univ-lorraine.fr:54002/api/entrees'));
+    final List<Entry> entriesCopy = [];
+    final response = await http.get(Uri.parse('${dotenv.env['BASE_URL']}${dotenv.env['PORT']}/api/entrees'));
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final entriesdata = json['entrees'];
@@ -26,24 +27,35 @@ class EntryProvider extends ChangeNotifier {
           if (entryResponse.statusCode != 200) {
             throw Exception('Impossible de charger les Entrynes (code d\'erreur : ${response.statusCode})');
           } else {
-            final entrydata = jsonDecode(entryResponse.body)['entree'];
+            final entrydata = jsonDecode(entryResponse.body);
             try {
               final Entry entry = Entry.fromJson(entrydata);
+                if(researchValue != null && researchValue.isNotEmpty){
+                   String fullInfo = '${entry.firstName} ${entry.lastName} ${entry.email} ${entry.function} ${entry.numBureau}'.toLowerCase();
+                  if(fullInfo.contains(researchValue)){
+                    entriesCopy.add(entry);
+                  }
+                }
+             
               _entries.add(entry);
             } catch (e) {
               print(e);
             }
           }
       }
-
-      if (sortOrder) {
-        _entries.sort((a, b) => a.lastName.compareTo(b.lastName));
-      } else {
-        _entries.sort((a, b) => b.lastName.compareTo(a.lastName));
-      }
-
     } else {
       throw Exception('Impossible de charger les Entrées (code d\'erreur : ${response.statusCode})');
+    }
+
+    if(researchValue != null && researchValue.isNotEmpty){
+      _entries.clear();
+      _entries.addAll(entriesCopy);
+    }
+
+    if (sortOrder) {
+      _entries.sort((a, b) => a.lastName.compareTo(b.lastName));
+    } else {
+      _entries.sort((a, b) => b.lastName.compareTo(a.lastName));
     }
   }
 }

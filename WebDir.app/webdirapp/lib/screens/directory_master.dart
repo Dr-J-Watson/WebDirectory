@@ -5,7 +5,7 @@ import 'package:webdirapp/screens/entry_provider.dart';
 import 'package:webdirapp/models/entry.dart';
 
 class DirectoryMaster extends StatefulWidget {
-  const DirectoryMaster({super.key});
+  const DirectoryMaster({Key? key});
 
   @override
   State<DirectoryMaster> createState() => _DirectoryMasterState();
@@ -29,11 +29,16 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
     return Scaffold(
       appBar: AppBar(
         
-        title: const TextField(
-          decoration: InputDecoration(
+        title: TextField(
+          decoration: const InputDecoration(
             icon: Icon(Icons.search),
             hintText: 'Rechercher un contact',
           ),
+          onChanged: (String value) {
+            setState(() {
+              researchValue = value;
+            });
+          },
         ),
         actions: [
           IconButton(
@@ -98,7 +103,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
       ),
       body: Consumer<EntryProvider>(builder: (context, entryProvider, child) {
         return FutureBuilder(
-          future: entryProvider.getEntries(sortOrder),
+          future: entryProvider.getEntries(sortOrder,researchValue),
           builder: (BuildContext context, AsyncSnapshot<List<Entry>> snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
