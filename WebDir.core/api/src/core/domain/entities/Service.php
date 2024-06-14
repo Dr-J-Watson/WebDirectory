@@ -17,6 +17,6 @@ class Service extends Model{
 
     public function entree(){
         return $this->belongsToMany('WebDir\core\api\core\domain\entities\Entree', 'entree_departement',
-        'id','uuid');
+        'id','id');
     }
 }

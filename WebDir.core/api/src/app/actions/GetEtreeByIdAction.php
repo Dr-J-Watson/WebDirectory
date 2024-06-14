@@ -1,11 +1,11 @@
 <?php
 
-namespace WebDire\core\api\app\actions;
+namespace WebDir\core\api\app\actions;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use WebDire\core\api\core\services\entree\EntreeService;
-use WebDire\core\api\core\services\entree\EntreeServiceInterface;
+use WebDir\core\api\core\services\entree\EntreeService;
+use WebDir\core\api\core\services\entree\EntreeServiceInterface;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
@@ -20,7 +20,7 @@ class GetEtreeByIdAction extends AbstractAction
         $this->serviceService = new ServiceService();
     }
 
-    public function __invoke(Request $request, Response $response, array $args): Response
+    public function __invoke(Request $rq, Response $rs, $args): Response
     {
         $entreeData = $this->entreeService->getEntreeById($args['id']);
         $entreeFormatted = [
@@ -35,7 +35,7 @@ class GetEtreeByIdAction extends AbstractAction
                 'image' => $entreeData['image']
             ],
             'links' => [
-                $this->serviceService->getLinksToServicesByEntreeId($entreeData['uuid'])
+                $this->serviceService->getLinksToEntreesByServiceId($entreeData['uuid'])
             ]
         ];
 
@@ -45,7 +45,7 @@ class GetEtreeByIdAction extends AbstractAction
         ];
 
         $responseContentJson = json_encode($responseContent);
-        $response->getBody()->write($responseContentJson);
+        $rs->getBody()->write($responseContentJson);
 
         // Retourne la réponse avec l'en-tête Content-Type JSON
         return $rs->withHeader('Content-Type', 'application/json');

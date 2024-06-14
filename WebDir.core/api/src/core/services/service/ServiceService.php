@@ -11,10 +11,13 @@ class ServiceService implements ServiceServiceInterface
     public function getServices(): array
     {
         $services = Service::all();
+        if ($services->isEmpty()) {
+            return [];
+        }
         return $services->toArray();
     }
 
-    //Récupère les services d'une entrée
+    //Récupère les services d'une entrée grace à son id
     public function getServicesByEntreeId(string $id): array
     {
         $entree = Entree::findOrFail($id);
@@ -31,7 +34,7 @@ class ServiceService implements ServiceServiceInterface
                 ]
             ]; 
         }
-        return $links;
+        return $links ?? (['colections' => []]);
     }
 
 

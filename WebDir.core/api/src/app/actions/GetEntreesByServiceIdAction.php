@@ -42,7 +42,7 @@ class GetEntreesByServiceIdAction extends AbstractAction
                     'self' => [
                         'href' => '/api/entrees/' . $entree['uuid']
                     ],
-                    $this->serviceService->getLinksToServicesByEntreeId($entree['uuid'])    
+                    $this->serviceService->getLinksToEntreesByServiceId($entree['uuid'])    
                 ]         
             ];
         }
