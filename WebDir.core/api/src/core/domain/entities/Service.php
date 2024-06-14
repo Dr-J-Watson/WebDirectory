@@ -5,7 +5,7 @@ namespace WebDir\core\api\core\domain\entities;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class Departement extends Model{
+class Service extends Model{
 
 
     protected $table = 'department';

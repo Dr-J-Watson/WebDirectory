@@ -15,6 +15,8 @@ return function(\Slim\App $app): \Slim\App {
 
     $app->get('/api/entrees/{id}[/]', GetEtreeByIdAction::class)->setName('entrees_by_id');
 
+    $app->get('/api/services/{id}/entrees[/]', GetEntreesByServiceIdAction::class)->setName('entrees_by_service_id');
+
     return $app;
 
 };
