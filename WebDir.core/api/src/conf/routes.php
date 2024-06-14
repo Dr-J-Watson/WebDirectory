@@ -2,18 +2,18 @@
 declare(strict_types=1);
 
 
-use WebDir\core\api\app\actions\GetBoxAction;
-use WebDir\core\api\app\actions\GetCategoriesAction;
-use WebDir\core\api\app\actions\GetPrestationsAction;
+use WebDir\core\api\app\actions\GetServicesAction;
+use WebDir\core\api\app\actions\GetEntreesAction;
+use WebDir\core\api\app\actions\GetEtreeByIdAction;
 
 
 return function(\Slim\App $app): \Slim\App {
 
-    $app->get('/api/services[/]', GetPrestationsAction::class)->setName('services');
+    $app->get('/api/services[/]', GetServicesAction::class)->setName('services');
 
-    $app->get('/api/entrees[/]', GetCategoriesAction::class)->setName('entrees');
+    $app->get('/api/entrees[/]', GetEntreesAction::class)->setName('entrees');
 
-    $app->get('/api/entrees/{id}[/]', GetBoxAction::class)->setName('entrees_by_id');
+    $app->get('/api/entrees/{id}[/]', GetEtreeByIdAction::class)->setName('entrees_by_id');
 
     return $app;
 
