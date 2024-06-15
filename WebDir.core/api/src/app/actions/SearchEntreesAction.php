@@ -63,6 +63,6 @@ class SearchEntreesAction extends AbstractAction
 
         $responseContentJson = json_encode($responseContent, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
-        return $rs->withHeader('Content-Type', 'application/json');
+        return $rs->withHeader('Content-Type', 'application/json','Access-Control-Allow-Origin', '*');
     }
 }

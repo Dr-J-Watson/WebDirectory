@@ -47,7 +47,7 @@ class GetServicesAction extends AbstractAction
         $rs->getBody()->write($responseContentJson);
 
         // Retourne la réponse avec l'en-tête Content-Type JSON
-        return $rs->withHeader('Content-Type', 'application/json');
+        return $rs->withHeader('Content-Type', 'application/json','Access-Control-Allow-Origin', '*');
 
         return $rs;
     }
