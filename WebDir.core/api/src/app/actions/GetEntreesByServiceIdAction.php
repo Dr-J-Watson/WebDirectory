@@ -24,8 +24,10 @@ class GetEntreesByServiceIdAction extends AbstractAction
     // Méthode invoquée lorsque l'action est appelée
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
+
+        $sort = $rq->getQueryParams()['sort'] ?? null;
         // Récupération des données des entrées
-        $entreesData = $this->entreeService->getEntreesByServiceId($args['id']);
+        $entreesData = $this->entreeService->getEntreesByServiceId($args['id'], $sort);
 
         // Formatage des données des entrées pour l'inclusion dans la réponse
         $entreesFormatted = [];

@@ -29,7 +29,8 @@ class SearchEntreesAction extends AbstractAction
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
         $query = $rq->getQueryParams()['q'];
-        $entreesData = $this->entreeService->searchEntrees($query);
+        $sort = $rq->getQueryParams()['sort'] ?? null;
+        $entreesData = $this->entreeService->searchEntrees($query , $sort);
 
         $entreesFormatted = [];
         foreach ($entreesData as $entree) {

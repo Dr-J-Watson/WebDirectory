@@ -8,11 +8,22 @@ use WebDir\core\api\core\domain\entities\Service;
 class EntreeService implements EntreeServiceInterface
 {
     // Récupère toutes les entrées sous forme de tableau
-    public function getEntrees(): array
+    public function getEntrees(?string $sort = null): array
     {
-        $entrees = Entree::all();
+        $query = Entree::query();
+    
+        if ($sort) {
+            if ($sort === 'nom-asc') {
+                $query->orderBy('lastName', 'asc');
+            } elseif ($sort === 'nom-desc') {
+                $query->orderBy('lastName', 'desc');
+            }
+        }
+    
+        $entrees = $query->get();
         return $entrees->toArray();
     }
+    
 
     // Récupère une entrée par son id
     public function getEntreeById(string $id): array
@@ -26,17 +37,39 @@ class EntreeService implements EntreeServiceInterface
     }
 
     // Retourne les entrées d'un service grace à son id sous forme de tableau
-    public function getEntreesByServiceId(string $id): array
+    public function getEntreesByServiceId(string $id, ?string $sort = null): array
     {
         $service = Service::findOrFail($id);
-        return $service->entree->toArray();
-    }
+        $query = $service->entree();
 
-    public function searchEntrees(string $search): array
-    {
-        $entrees = Entree::where('lastName', 'like', '%' . $search . '%')
-            ->orWhere('firstName', 'like', '%' . $search . '%')
-            ->get();
+        if ($sort) {
+            if ($sort === 'nom-asc') {
+                $query->orderBy('lastName', 'asc');
+            } elseif ($sort === 'nom-desc') {
+                $query->orderBy('lastName', 'desc');
+            }
+        }
+    
+        $entrees = $query->get();
         return $entrees->toArray();
     }
+    
+
+    public function searchEntrees(string $search, ?string $sort = null): array
+    {
+        $query = Entree::where('lastName', 'like', '%' . $search . '%')
+            ->orWhere('firstName', 'like', '%' . $search . '%');
+    
+        if ($sort) {
+            if ($sort === 'nom-asc') {
+                $query->orderBy('lastName', 'asc');
+            } elseif ($sort === 'nom-desc') {
+                $query->orderBy('lastName', 'desc');
+            }
+        }
+    
+        $entrees = $query->get();
+        return $entrees->toArray();
+    }
+    
 }
