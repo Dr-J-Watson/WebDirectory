@@ -11,7 +11,7 @@ services:
   db:
     image: mysql:latest
     container_name: mysql
-    restart: always
+    restart: unless-stopped
     # les variables d'environnement
     environment:
       MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD:-root}
@@ -27,12 +27,25 @@ services:
         aliases:
           - mysql
 
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: always
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer
+  #   restart: always
+  #   ports:
+  #     - "64991:8080"
+  #   networks:
+  #     - webdir
+
+  #phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: unless-stopped
     ports:
-      - "64991:8080"
+      - "64991:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
     networks:
       - webdir
 
@@ -40,7 +53,7 @@ services:
   php_appli:
     image: canals/php
     container_name: php_appli
-    restart: always
+    restart: unless-stopped
     ports:
       - "64992:80"
     volumes:
@@ -55,7 +68,7 @@ services:
   php_api:
     image: canals/php
     container_name: php_api
-    restart: always
+    restart: unless-stopped
     ports:
       - "64993:80"
     volumes:
