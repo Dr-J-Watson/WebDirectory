@@ -6,6 +6,7 @@ use WebDir\core\api\app\actions\GetServicesAction;
 use WebDir\core\api\app\actions\GetEntreesAction;
 use WebDir\core\api\app\actions\GetEtreeByIdAction;
 use WebDir\core\api\app\actions\GetEntreesByServiceIdAction;
+use WebDir\core\api\app\actions\SearchEntreesAction;
 
 
 return function(\Slim\App $app): \Slim\App {
@@ -13,6 +14,8 @@ return function(\Slim\App $app): \Slim\App {
     $app->get('/api/services[/]', GetServicesAction::class)->setName('services');
 
     $app->get('/api/entrees[/]', GetEntreesAction::class)->setName('entrees');
+
+    $app->get('/api/entrees/search[/]', SearchEntreesAction::class);
 
     $app->get('/api/entrees/{id}[/]', GetEtreeByIdAction::class)->setName('entrees_by_id');
 

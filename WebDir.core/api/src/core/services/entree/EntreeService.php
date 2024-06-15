@@ -31,4 +31,12 @@ class EntreeService implements EntreeServiceInterface
         $service = Service::findOrFail($id);
         return $service->entree->toArray();
     }
+
+    public function searchEntrees(string $search): array
+    {
+        $entrees = Entree::where('lastName', 'like', '%' . $search . '%')
+            ->orWhere('firstName', 'like', '%' . $search . '%')
+            ->get();
+        return $entrees->toArray();
+    }
 }
