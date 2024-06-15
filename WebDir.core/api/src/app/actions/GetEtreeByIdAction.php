@@ -22,20 +22,22 @@ class GetEtreeByIdAction extends AbstractAction
 
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
-        $entreeData = $this->entreeService->getEntreeById($args['id']);
+        $entree = $this->entreeService->getEntreeById($args['id']);
         $entreeFormatted = [
             'entree' => [
-                'uuid' => $entreeData['uuid'],
-                'lastName' => $entreeData['lastName'],
-                'firstName' => $entreeData['firstName'],
-                'numBureau' => $entreeData['numBureau'],
-                'telFixe' => $entreeData['telFixe'],
-                'telMobile' => $entreeData['telMobile'],
-                'email' => $entreeData['email'],
-                'image' => $entreeData['image']
+                'uuid' => $entree['uuid'],
+                'lastName' => $entree['lastName'],
+                'firstName' => $entree['firstName'],
+                'numBureau' => $entree['numBureau'],
+                'telFixe' => $entree['telFixe'],
+                'telMobile' => $entree['telMobile'],
+                'email' => $entree['email'],
+                'image' => $entree['image'],
+                //la liste des noms des services de l'entrée
+                'services' => $this->serviceService->getNameServicesByEntreeId($entree['uuid'])
             ],
             'links' => [
-                $this->serviceService->getLinksToEntreesByServiceId($entreeData['uuid'])
+                "collections" => $this->serviceService->getLinksToEntreesByServiceId($entree['uuid']) 
             ]
         ];
 
@@ -44,7 +46,7 @@ class GetEtreeByIdAction extends AbstractAction
             'entree' => $entreeFormatted
         ];
 
-        $responseContentJson = json_encode($responseContent);
+        $responseContentJson = json_encode($responseContent , JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
 
         // Retourne la réponse avec l'en-tête Content-Type JSON

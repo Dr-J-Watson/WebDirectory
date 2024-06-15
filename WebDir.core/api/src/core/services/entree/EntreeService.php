@@ -25,10 +25,10 @@ class EntreeService implements EntreeServiceInterface
         }
     }
 
-    // Récupère les enrtées d'un service
+    // Retourne les entrées d'un service grace à son id sous forme de tableau
     public function getEntreesByServiceId(string $id): array
     {
         $service = Service::findOrFail($id);
-        return $service->entrees->toArray();
+        return $service->entree->toArray();
     }
 }

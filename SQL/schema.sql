@@ -23,6 +23,7 @@ CREATE TABLE entree_department (
   department_id INT(11) NOT NULL,
   PRIMARY KEY (entree_id, department_id),
   KEY FK_entree_department_department (department_id),
+  KEY FK_entree_department_entree (entree_id),
   CONSTRAINT FK_entree_department_department FOREIGN KEY (department_id) REFERENCES department (id),
   CONSTRAINT FK_entree_department_entree FOREIGN KEY (entree_id) REFERENCES entree (uuid)
 );

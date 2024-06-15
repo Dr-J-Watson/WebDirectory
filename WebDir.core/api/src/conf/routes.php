@@ -5,6 +5,7 @@ declare(strict_types=1);
 use WebDir\core\api\app\actions\GetServicesAction;
 use WebDir\core\api\app\actions\GetEntreesAction;
 use WebDir\core\api\app\actions\GetEtreeByIdAction;
+use WebDir\core\api\app\actions\GetEntreesByServiceIdAction;
 
 
 return function(\Slim\App $app): \Slim\App {

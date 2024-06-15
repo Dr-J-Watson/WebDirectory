@@ -18,7 +18,11 @@ class Entree extends Model{
     protected $fillable = ['uuid', 'lastName', 'firstName', 'numBureau', 'telFixe', 'telMobile', 'email', 'image'];
 
     public function services(){
-        return $this->belongsToMany('WebDir\core\api\core\domain\entities\Service','entree_department',
-        'id','id');
+        return $this->belongsToMany(
+            'WebDir\core\api\core\domain\entities\Service', 
+            'entree_department',
+            'entree_id',
+            'department_id'
+        );
     }
 }

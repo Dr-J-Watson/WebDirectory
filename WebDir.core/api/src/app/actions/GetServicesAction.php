@@ -43,7 +43,7 @@ class GetServicesAction extends AbstractAction
             'services' => $servicesFormatted
         ];
 
-        $responseContentJson = json_encode($responseContent);
+        $responseContentJson = json_encode($responseContent , JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
 
         // Retourne la réponse avec l'en-tête Content-Type JSON

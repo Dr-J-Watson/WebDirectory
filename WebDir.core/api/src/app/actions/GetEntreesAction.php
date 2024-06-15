@@ -36,27 +36,27 @@ class GetEntreesAction extends AbstractAction
                     'lastName' => $entree['lastName'],
                     'firstName' => $entree['firstName'],
                     //la liste des services de l'entrée
-                    'services' => $this->serviceService->getServicesByEntreeId($entree['uuid'])
+                    'services' => $this->serviceService->getNameServicesByEntreeId($entree['uuid'])
 
                 ],   
                 'links' => [
                     'self' => [
                         'href' => '/api/entrees/' . $entree['uuid']
                     ],
-                    $this->serviceService->getLinksToEntreesByServiceId($entree['uuid'])    
+                    "collections" => $this->serviceService->getLinksToEntreesByServiceId($entree['uuid'])    
                 ]         
             ];
         }
 
         // Création du contenu de la réponse
         $responseContent = [
-            'type' => 'collection',
+            'type' => 'collections',
             'count' => count($entreesFormatted),
             'entrees' => $entreesFormatted
         ];
 
         // Encodage du contenu de la réponse en JSON
-        $responseContentJson = json_encode($responseContent);
+        $responseContentJson = json_encode($responseContent, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
 
         // Retourne la réponse avec l'en-tête Content-Type JSON

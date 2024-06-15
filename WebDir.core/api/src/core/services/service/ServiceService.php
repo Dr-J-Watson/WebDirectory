@@ -24,17 +24,34 @@ class ServiceService implements ServiceServiceInterface
         return $entree->services->toArray();
     }
 
-    //Récupère les liens vers les entreés d'un service /api/services/{id}/entrees pour une entrée
+    //Récupère le lien vers un service grace à son id "/api/services/{id}/entrees"
+    public function getLinkToServiceById(string $id): string
+    {
+        return "/api/services/" . $id . "/entrees";
+    }
+
+    
     public function getLinksToEntreesByServiceId(string $id): array
     {
-        foreach ($this->getServicesByEntreeId($id) as $service) {
-            $links[] = [
-                'colections' => [
-                    'href' => '/api/services/' . $service['id'] . '/entrees'
-                ]
-            ]; 
+        $services = $this->getServicesByEntreeId($id);
+        $links = [];
+        foreach ($services as $service) {
+            $links[$service["nom"]] = $this->getLinkToServiceById($service['id']);
         }
-        return $links ?? (['colections' => []]);
+        return $links;
+    }
+    
+
+    //Retourne le nom des services d'une entrée grace à son id sous forme de tableau
+    public function getNameServicesByEntreeId(string $id): array
+    {
+        $entree = Entree::findOrFail($id);
+        $services = $entree->services->toArray();
+        $names = [];
+        foreach ($services as $service) {
+            $names[] = $service['nom'];
+        }
+        return $names;
     }
 
 
