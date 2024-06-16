@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDir\core\appli\core\services\personne;
+namespace WebDir\core\appli\core\services\Entree;
 
 use WebDir\core\appli\core\domain\entities\Entree;
 
@@ -16,5 +16,9 @@ class EntreeService implements EntreeServiceInterface{
         $newPersonne->email = $personne['email'];
         $newPersonne->image = $personne['image'];
         $newPersonne->save();
+    }
+
+    public function getEntree(): array{
+        return Entree::all()->toArray();
     }
 }

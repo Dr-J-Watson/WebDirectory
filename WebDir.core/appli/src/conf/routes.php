@@ -4,30 +4,41 @@ declare(strict_types=1);
 
 use WebDir\core\appli\app\action\GetAddDepartementForm;
 use WebDir\core\appli\app\action\GetAddEntreeForm;
+use WebDir\core\appli\app\action\GetConnexion;
 use WebDir\core\appli\app\action\GetHomeAction;
 use WebDir\core\appli\app\action\PostAddDepartement;
 use WebDir\core\appli\app\action\PostAddEntree;
+use WebDir\core\appli\app\action\PostConnexionAction;
 
 return function (\Slim\App $app): \Slim\App {
 
     // Page d'accueil
     $app->get('/',
-        GetHomeAction::class
+        GetConnexion::class
         )->setName('/');
 
-    // Page formulaire ajout d'une personne dans l'annuaire
-    $app->get('/add/personne', GetAddEntreeForm::class)
+    // Page formulaire ajout d'une Entree dans l'annuaire
+    $app->get('/add/Entree', GetAddEntreeForm::class)
         ->setName('addPersonne');
 
     $app->get('/add/departement', GetAddDepartementForm::class)
         ->setName('addDepartement');
 
     // Ajout bd
-    $app->post('/addbd/personne', PostAddEntree::class)
+    $app->post('/addbd/Entree', PostAddEntree::class)
         ->setName('addPersonnePost');
 
     $app->post('/addbd/departement', PostAddDepartement::class)
         ->setName('addDepartementPost');
+
+    // Connexion
+    $app->get('/connexion', GetConnexion::class)
+        ->setName('connexion');
+    $app->post('/connexion', PostConnexionAction::class)
+        ->setName('connexion');
+
+    // Affichage liste entree
+    $app->get('/home', GetHomeAction::class)->setName('home');
 
     return $app;
 };

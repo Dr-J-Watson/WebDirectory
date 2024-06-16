@@ -26,3 +26,11 @@ CREATE TABLE entree_department (
   CONSTRAINT FK_entree_department_department FOREIGN KEY (department_id) REFERENCES department (id),
   CONSTRAINT FK_entree_department_entree FOREIGN KEY (entree_id) REFERENCES entree (uuid)
 );
+
+CREATE TABLE user(
+    user_id VARCHAR(255) NOT NULL,
+    id VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role INT(11) NOT NULL ,
+    PRIMARY KEY (user_id)
+)

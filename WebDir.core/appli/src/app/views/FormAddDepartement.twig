@@ -1,0 +1,16 @@
+{% extends "squelette.twig" %}
+
+{% block content %}
+    <form action="{{ url_for('addDepartementPost') }}" method="post">
+        <label for="name">Nom: </label>
+        <input type="text" id="name" name="name" value="">
+
+        <label for="etage">Étage: </label>
+        <input type="number" id="etage" name="etage" value="" min="0">
+
+        <label for="desc">Description: </label>
+        <textarea id="desc" name="desc"> </textarea>
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}

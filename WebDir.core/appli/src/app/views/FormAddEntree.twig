@@ -1,25 +1,49 @@
 {% extends "squelette.twig" %}
 
 {% block content %}
-    <form action="{{ url_for('addPersonnePost') }}" method="post">
-        <label for="lastName">Nom: </label>
-        <input type="text" id="lastName" name="lastName" value="">
+    <form action="{{ url_for('addPersonnePost') }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="lastName">Nom: </label>
+            <input type="text" id="lastName" name="lastName" value="">
+        </div>
 
-        <label for="firstName">Prénom: </label>
-        <input type="text" id="firstName" name="firstName" value="">
+        <div>
+            <label for="firstName">Prénom: </label>
+            <input type="text" id="firstName" name="firstName" value="">
+        </div>
 
-        <label for="numBureau"> Numéro de Bureau: </label>
-        <input type="text" id="numBureau" name="numBureau" value="" placeholder="404 ou 404B">
+        <div>
+            <label for="numBureau"> Numéro de Bureau: </label>
+            <input type="text" id="numBureau" name="numBureau" value="" placeholder="404 ou 404B">
+        </div>
 
-        <label for="telFixe"> Fixe: </label>
-        <input type="tel" id="telFixe" name="telFixe" value="" placeholder="+33#########">
+        <div>
+            <label for="telFixe"> Fixe: </label>
+            <input type="tel" id="telFixe" name="telFixe" value="" placeholder="+33#########">
+        </div>
 
-        <label for="telMobile"> Mobile: </label>
-        <input type="tel" id="telMobile" name="telMobile" value="" placeholder="+33#########">
+        <div>
+            <label for="telMobile"> Mobile: </label>
+            <input type="tel" id="telMobile" name="telMobile" value="" placeholder="+33#########">
+        </div>
 
-        <label for="email"> Email: </label>
-        <input type="email" id="email" name="email" value="">
+        <div>
+            <label for="email"> Email: </label>
+            <input type="email" id="email" name="email" value="">
+        </div>
 
-        <button type="submit">Ajouter</button>
+        <div>
+            <label for="departement">Service / Departement: </label>
+            <input type="text" id="departement" name="departement" value="">
+        </div>
+
+        <div>
+            <label for="image">Photo de profil: </label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg" >
+        </div>
+
+        <div>
+            <button type="submit">Ajouter</button>
+        </div>
     </form>
 {% endblock %}

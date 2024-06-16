@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDir\core\appli\core\services\personne;
+namespace WebDir\core\appli\core\services\Entree;
 
 class EntreeServiceBadDataException extends \Exception{
 

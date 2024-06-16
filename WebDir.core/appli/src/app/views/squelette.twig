@@ -13,12 +13,14 @@
     <nav class="navbar">
         <a href="{{ url_for('addPersonne') }}">Ajouter personne</a>
         <a href="{{ url_for('addDepartement') }}">Gestion service/département</a>
+        <a href="{{ url_for('connexion') }}">Connexion</a>
     </nav>
 
 </header>
 
 <main>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
 </main>
 
 <footer>

@@ -1,1 +1,30 @@
 {% extends "squelette.twig" %}
+{% block content %}
+    <div>
+        <h1>Liste des personnes</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Numéro de bureau</th>
+                <th>Téléphone fixe</th>
+                <th>Téléphone mobile</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for personne in personnes %}
+                <tr>
+                    <td>{{ personne['lastName'] }}</td>
+                    <td>{{ personne['firstName'] }}</td>
+                    <td>{{ personne['numBureau'] }}</td>
+                    <td>{{ personne['telFixe'] }}</td>
+                    <td>{{ personne['telMobile'] }}</td>
+                    <td>{{ personne['email'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
