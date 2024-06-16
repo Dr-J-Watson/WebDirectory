@@ -29,9 +29,9 @@ CREATE TABLE entree_department (
 );
 
 CREATE TABLE user(
-    user_id VARCHAR(255) NOT NULL,
-    id VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    role INT(11) NOT NULL ,
-    PRIMARY KEY (user_id)
+  user_id VARCHAR(255) NOT NULL,
+  id VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role INT(11) NOT NULL ,
+  PRIMARY KEY (user_id)
 )
