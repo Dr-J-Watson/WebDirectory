@@ -5,7 +5,7 @@ namespace WebDir\core\api\core\domain\entities;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class Departement extends Model{
+class Service extends Model{
 
 
     protected $table = 'department';
@@ -16,7 +16,11 @@ class Departement extends Model{
     protected $fillable = ['id', 'nom', 'etage', 'description'];
 
     public function entree(){
-        return $this->belongsToMany('WebDir\core\api\core\domain\entities\Entree', 'entree_departement',
-        'id','uuid');
+        return $this->belongsToMany(
+            'WebDir\core\api\core\domain\entities\Entree', 
+            'entree_department',
+            'department_id',
+            'entree_id'
+        );
     }
 }

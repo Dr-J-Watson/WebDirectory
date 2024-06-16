@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WebDir\core\api\app\actions;
 
@@ -9,8 +9,7 @@ use WebDir\core\api\core\services\entree\EntreeServiceInterface;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
-
-class GetEntreesAction extends AbstractAction
+class GetEntreesByServiceIdAction extends AbstractAction
 {
     private EntreeServiceInterface $entreeService;
     private ServiceServiceInterface $serviceService;
@@ -25,9 +24,10 @@ class GetEntreesAction extends AbstractAction
     // Méthode invoquée lorsque l'action est appelée
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
+
         $sort = $rq->getQueryParams()['sort'] ?? null;
         // Récupération des données des entrées
-        $entreesData = $this->entreeService->getEntrees($sort);
+        $entreesData = $this->entreeService->getEntreesByServiceId($args['id'], $sort);
 
         // Formatage des données des entrées pour l'inclusion dans la réponse
         $entreesFormatted = [];
@@ -59,9 +59,6 @@ class GetEntreesAction extends AbstractAction
         // Encodage du contenu de la réponse en JSON
         $responseContentJson = json_encode($responseContent, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
-
-        // Retourne la réponse avec l'en-tête Content-Type JSON
         return $rs->withHeader('Content-Type', 'application/json','Access-Control-Allow-Origin', '*');
-
     }  
 }
