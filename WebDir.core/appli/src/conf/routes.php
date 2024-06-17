@@ -21,14 +21,14 @@ return function (\Slim\App $app): \Slim\App {
     $app->get('/add/Entree', GetAddEntreeForm::class)
         ->setName('addPersonne');
 
-    $app->get('/add/departement', GetAddServiceForm::class)
+    $app->get('/add/service', GetAddServiceForm::class)
         ->setName('addDepartement');
 
     // Ajout bd
     $app->post('/addbd/Entree', PostAddEntree::class)
         ->setName('addPersonnePost');
 
-    $app->post('/addbd/departement', PostAddService::class)
+    $app->post('/addbd/service', PostAddService::class)
         ->setName('addDepartementPost');
 
     // Connexion

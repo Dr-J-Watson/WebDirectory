@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDir\core\appli\core\services\departement;
+namespace WebDir\core\appli\core\services\service;
 
 use WebDir\core\appli\core\domain\entities\Service;
 use WebDir\core\appli\core\services\departement\ServicesServiceInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDir\core\appli\core\services\departement;
+namespace WebDir\core\appli\core\services\service;
 
 interface ServicesServiceInterface
 {
