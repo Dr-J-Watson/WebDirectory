@@ -54,5 +54,11 @@ class ServiceService implements ServiceServiceInterface
         return $names;
     }
 
+    public function getNameServiceById(string $id): string
+    {
+        $service = Service::findOrFail($id);
+        return $service->nom;
+    }
+
 
 } 

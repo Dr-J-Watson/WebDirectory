@@ -63,6 +63,8 @@ class GetEntreesByServiceIdAction extends AbstractAction
         // Création du contenu de la réponse
         $responseContent = [
             'type' => 'collections',
+            //mettre le nom du service
+            'service' => $this->serviceService->getNameServiceById($args['id']),
             'count' => count($entreesFormatted),
             'entrees' => $entreesFormatted
         ];
