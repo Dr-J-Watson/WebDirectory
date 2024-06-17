@@ -22,37 +22,46 @@ class GetEtreeByIdAction extends AbstractAction
 
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
+
+        // Ajouter les en-têtes CORS
+        $rs = $rs->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
+            ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+            ->withHeader('Content-Type', 'application/json');
+
+        // Vérifier si la requête est une requête OPTIONS (pré-vol)
+        if ($rq->getMethod() === 'OPTIONS') {
+            return $rs->withStatus(204); // No Content
+        }
+
         $entree = $this->entreeService->getEntreeById($args['id']);
         $entreeFormatted = [
-            'entree' => [
-                'uuid' => $entree['uuid'],
-                'lastName' => $entree['lastName'],
-                'firstName' => $entree['firstName'],
-                'numBureau' => $entree['numBureau'],
-                'telFixe' => $entree['telFixe'],
-                'telMobile' => $entree['telMobile'],
-                'email' => $entree['email'],
-                'image' => $entree['image'],
-                //la liste des noms des services de l'entrée
-                'services' => $this->serviceService->getNameServicesByEntreeId($entree['uuid'])
-            ],
+
+            'uuid' => $entree['uuid'],
+            'lastName' => $entree['lastName'],
+            'firstName' => $entree['firstName'],
+            'numBureau' => $entree['numBureau'],
+            'fonction' => $entree['fonction'],
+            'telFixe' => $entree['telFixe'],
+            'telMobile' => $entree['telMobile'],
+            'email' => $entree['email'],
+            'image' => $entree['image'],
+            //la liste des noms des services de l'entrée
+            'services' => $this->serviceService->getNameServicesByEntreeId($entree['uuid'])
+        ];
+
+        $responseContent = [
+            'type' => 'resource',
+            'entree' => $entreeFormatted,
             'links' => [
                 "collections" => $this->serviceService->getLinksToEntreesByServiceId($entree['uuid']) 
             ]
         ];
 
-        $responseContent = [
-            'type' => 'resource',
-            'entree' => $entreeFormatted
-        ];
-
         $responseContentJson = json_encode($responseContent , JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
 
-        // Retourne la réponse avec l'en-tête Content-Type JSON
-        return $rs->withHeader('Content-Type', 'application/json','Access-Control-Allow-Origin', '*');
-
-        return $response;
+        return $rs;
     }
 }
 
