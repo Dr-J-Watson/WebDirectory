@@ -25,6 +25,18 @@ class GetEntreesAction extends AbstractAction
     // Méthode invoquée lorsque l'action est appelée
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
+
+        // Ajouter les en-têtes CORS
+        $rs = $rs->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
+            ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+            ->withHeader('Content-Type', 'application/json');
+
+        // Vérifier si la requête est une requête OPTIONS (pré-vol)
+        if ($rq->getMethod() === 'OPTIONS') {
+            return $rs->withStatus(204); // No Content
+        }
+
         $sort = $rq->getQueryParams()['sort'] ?? null;
         // Récupération des données des entrées
         $entreesData = $this->entreeService->getEntrees($sort);
@@ -60,8 +72,8 @@ class GetEntreesAction extends AbstractAction
         $responseContentJson = json_encode($responseContent, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         $rs->getBody()->write($responseContentJson);
 
-        // Retourne la réponse avec l'en-tête Content-Type JSON
-        return $rs->withHeader('Content-Type', 'application/json','Access-Control-Allow-Origin', '*');
+   
+        return $rs;
 
     }  
 }
