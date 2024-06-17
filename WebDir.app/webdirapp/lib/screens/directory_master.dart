@@ -5,7 +5,7 @@ import 'package:webdirapp/screens/entry_provider.dart';
 import 'package:webdirapp/models/entry.dart';
 
 class DirectoryMaster extends StatefulWidget {
-  const DirectoryMaster({Key? key});
+  const DirectoryMaster({super.key});
 
   @override
   State<DirectoryMaster> createState() => _DirectoryMasterState();
@@ -34,7 +34,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
             icon: Icon(Icons.search),
             hintText: 'Rechercher un contact',
           ),
-          onChanged: (String value) {
+          onSubmitted: (String value) {
             setState(() {
               researchValue = value;
             });
