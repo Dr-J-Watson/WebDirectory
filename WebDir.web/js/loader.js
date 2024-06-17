@@ -1,8 +1,7 @@
 import conf from './config.js';
 
-async function loadEntree(idEntree){
-    url = conf.url + '/api/entrees/';
-    return fetch(url + idEntree).catch(error => {
+async function loadEntree(url){
+    return fetch(url).catch(error => {
         console.error('Erreur lors de la récupération de l\'entrée');
     });
 }

@@ -12,7 +12,8 @@
 <script id="listEntreeTemplate" type="text/x-handlebars-template">
 	<section id="list">
     {{#each entrees}}
-      <h4>{{this.entree.lastName}} {{this.entree.firstName}}</h4>
+      <h4>{{this.entree.lastName}} {{this.entree.firstName}}</h4> 
+      <button class="voir" url="{{this.links.self.href}}">Voir</button>
       <p>Services :</p>
       <ul>
         {{#each this.entree.services}}
@@ -25,20 +26,27 @@
 
 <script id="entreeTemplate" type="text/x-handlebars-template">
 	<section id="entree">
-    {{#if data.image}}
-		  <img src="{{data.image}}">
+    {{#if image}}
+		  <img src="{{image}}">
+      {{else}}
+      <p>{{initiales.nom}}{{initiales.prenom}}</p>
     {{/if}}
     <h4>{{data.lastName}} {{data.firstName}}</h4>
+    <p>Fonction : {{data.fonction}}</p>
+    <p>Numéro de bureau : {{data.numBureau}}</p>
     <p>Services :</p>
     <ul>
-      {{#each data.services}}
-        <li>{{this.titre}}</li>
+      {{#each services}}
+        <li>{{this}}</li>
       {{/each}}
-    <h5>Informations de contact</h5>
-    <p>{{data.email}}</p>
-    <p>{{data.telMobile}}</p>
-    <p>{{data.telFixe}}</p>
-	  <button id="home">Home</button>
+    </ul>
+    <h4>Informations de contact</h4>
+    <div>
+      <a href="mailto:{{data.email}}">{{data.email}}</a>
+      <a href="tel:{{data.telMobile}}">{{data.telMobile}}</a>
+      <a href="tel:{{data.telFixe}}">{{data.telFixe}}</a>
+    </div>
+    <button id="home">Home</button>
 	 </section>
 </script>
 
