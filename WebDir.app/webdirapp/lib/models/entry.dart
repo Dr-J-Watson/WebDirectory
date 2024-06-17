@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Entry{
 
@@ -32,6 +33,6 @@ class Entry{
         telFixe = json['entree']['telMobile'],
         email = json['entree']['email'],
         services = List<String>.from(json['entree']['services'].map((item) => item.toString())),
-        image = json['entree']['image'] != null ? 'https://cataas.com/cat' : null; //'${dotenv.env['BASE_URL']}${dotenv.env['PORT']}${json['links']['image']}';
+        image = json['entree']['image'] != null ? '${dotenv.env['IMAGE_URL']}${json['entree']['image']}' : null;
 
 }
