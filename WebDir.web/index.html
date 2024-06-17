@@ -13,7 +13,7 @@
 	<section id="list">
     <select id="select">
       <option value=""></option>
-      <option value="/api/entrees">Aucun tri</option>
+      <option value="/api/entrees?sort=nom-asc">Aucun tri</option>
       {{#each services}}
         <option value="{{this.links.collections.href}}">{{this.service.nom}}</option>
       {{/each}}
