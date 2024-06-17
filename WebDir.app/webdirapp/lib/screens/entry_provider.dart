@@ -14,12 +14,14 @@ class EntryProvider extends ChangeNotifier {
   }
 
   Future<void> _fetchEntries(bool sortOrder, String? researchValue) async {
+    try{
     _entries.clear();
     final List<Entry> entriesCopy = [];
     final response = await http.get(Uri.parse('${dotenv.env['BASE_URL']}${dotenv.env['PORT']}/api/entrees'));
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final entriesdata = json['entrees'];
+      
       
       for (var entry in entriesdata) {
         final url = Uri.parse('${dotenv.env['BASE_URL']}${dotenv.env['PORT']}${entry['links']['self']['href']}');
@@ -29,9 +31,9 @@ class EntryProvider extends ChangeNotifier {
           } else {
             final entrydata = jsonDecode(entryResponse.body);
             try {
-              final Entry entry = Entry.fromJson(entrydata);
+              final Entry entry = Entry.fromJson(entrydata['entree']);
                 if(researchValue != null && researchValue.isNotEmpty){
-                   String fullInfo = '${entry.firstName} ${entry.lastName} ${entry.email} ${entry.function} ${entry.numBureau}'.toLowerCase();
+                   String fullInfo = '${entry.firstName} ${entry.lastName} ${entry.email} ${entry.numBureau}'.toLowerCase();
                   if(fullInfo.contains(researchValue)){
                     entriesCopy.add(entry);
                   }
@@ -56,6 +58,9 @@ class EntryProvider extends ChangeNotifier {
       _entries.sort((a, b) => a.lastName.compareTo(b.lastName));
     } else {
       _entries.sort((a, b) => b.lastName.compareTo(a.lastName));
+    }
+    }catch(e){
+      print(e);
     }
   }
 }

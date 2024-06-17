@@ -7,7 +7,7 @@ class EntryPreview extends StatefulWidget {
   final Entry entry;
   final EntryProvider entryProvider;
 
-  EntryPreview({required this.entry, required this.entryProvider});
+  const EntryPreview({super.key, required this.entry, required this.entryProvider});
 
   @override
   _EntryPreviewState createState() => _EntryPreviewState();
@@ -29,7 +29,7 @@ class _EntryPreviewState extends State<EntryPreview> {
               : null,
         ),
         title: Text('${widget.entry.firstName} ${widget.entry.lastName.toUpperCase()}'),
-        subtitle: Text('Départements : ${widget.entry.departements.join(', ')}'),
+        subtitle: Text('Service(s)/Département(s) : ${widget.entry.services.join(', ')}'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           //side: const BorderSide(color: Color.fromARGB(255, 158, 158, 158), width: 1.0),

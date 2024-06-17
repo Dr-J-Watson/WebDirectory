@@ -76,8 +76,8 @@ class _EntryDetailsState extends State<EntryDetails> {
               ),
           ),
           ListTile(
-            title: const Text('Département(s)'),
-            subtitle: Text(widget.entry.departements.join(', ')),
+            title: const Text('Service(s)/Département(s)'),
+            subtitle: Text(widget.entry.services.join(', ')),
             shape: const Border(bottom: BorderSide(color: Colors.grey)),
           ),
           GestureDetector(

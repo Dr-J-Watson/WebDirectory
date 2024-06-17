@@ -10,7 +10,7 @@ class Entry{
   String? telMobile;
   String email;
   String? image;
-  List<String> departements;
+  List<String> services;
 
   Entry({
     required this.lastName, 
@@ -20,19 +20,19 @@ class Entry{
     this.telFixe, 
     this.telMobile, 
     required this.email,
-    required this.departements, 
+    required this.services, 
     this.image
   });
 
   Entry.fromJson(Map<String, dynamic> json)
-      : lastName = json['entree']['nom'],
-        firstName = json['entree']['prenom'],
-        function = json['entree']['fonction'],
-        numBureau = json['entree']['numeroBureau'].toString(),
-        telMobile = json['entree']['numeroTel1'],
-        telFixe = json['entree']['numeroTel2'],
+      : lastName = json['entree']['lastName'],
+        firstName = json['entree']['firstName'],
+        function = 'temp', //json['entree']['fonction'],
+        numBureau = json['entree']['numBureau'].toString(),
+        telMobile = json['entree']['telFixe'],
+        telFixe = json['entree']['telMobile'],
         email = json['entree']['email'],
-        departements = List<String>.from(json['entree']['departement'].map((item) => item.toString())),
-        image = json['links']['image'] != null ? 'https://cataas.com/cat' : null; //'${dotenv.env['BASE_URL']}${dotenv.env['PORT']}${json['links']['image']}';
+        services = List<String>.from(json['entree']['services'].map((item) => item.toString())),
+        image = json['entree']['image'] != null ? '${dotenv.env['IMAGE_URL']}${json['entree']['image']}' : null;
 
 }
