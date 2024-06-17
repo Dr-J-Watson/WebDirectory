@@ -2,11 +2,11 @@
 declare(strict_types=1);
 
 
-use WebDir\core\appli\app\action\GetAddDepartementForm;
+use WebDir\core\appli\app\action\GetAddServiceForm;
 use WebDir\core\appli\app\action\GetAddEntreeForm;
 use WebDir\core\appli\app\action\GetConnexion;
 use WebDir\core\appli\app\action\GetHomeAction;
-use WebDir\core\appli\app\action\PostAddDepartement;
+use WebDir\core\appli\app\action\PostAddService;
 use WebDir\core\appli\app\action\PostAddEntree;
 use WebDir\core\appli\app\action\PostConnexionAction;
 
@@ -21,14 +21,14 @@ return function (\Slim\App $app): \Slim\App {
     $app->get('/add/Entree', GetAddEntreeForm::class)
         ->setName('addPersonne');
 
-    $app->get('/add/departement', GetAddDepartementForm::class)
+    $app->get('/add/service', GetAddServiceForm::class)
         ->setName('addDepartement');
 
     // Ajout bd
     $app->post('/addbd/Entree', PostAddEntree::class)
         ->setName('addPersonnePost');
 
-    $app->post('/addbd/departement', PostAddDepartement::class)
+    $app->post('/addbd/service', PostAddService::class)
         ->setName('addDepartementPost');
 
     // Connexion

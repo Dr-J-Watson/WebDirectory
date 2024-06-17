@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use WebDir\core\appli\app\action\AbstractAction;
 
-class GetAddDepartementForm extends AbstractAction
+class GetAddServiceForm extends AbstractAction
 {
 
     function __invoke(Request $rq, Response $rs, $args): Response{
@@ -16,6 +16,6 @@ class GetAddDepartementForm extends AbstractAction
         }
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'FormAddDepartement.twig');
+        return $view->render($rs, 'FormAddService.twig');
     }
 }
