@@ -49,7 +49,7 @@ class ServiceService implements ServiceServiceInterface
         $services = $entree->services->toArray();
         $names = [];
         foreach ($services as $service) {
-            $names[$service['nom']];
+            $names[$service['nom']] = $service['nom'];
         }
         return $names;
     }
