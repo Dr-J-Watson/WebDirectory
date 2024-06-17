@@ -8,4 +8,3 @@ api/src/composer.lock
 
 appli/src/conf/webdir.db.conf.ini
 api/src/conf/webdir.db.conf.ini
-appli/public/assets/image/
