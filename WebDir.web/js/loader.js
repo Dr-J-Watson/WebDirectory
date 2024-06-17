@@ -14,7 +14,7 @@ function loadService(idService){
 }
 
 function loadAllEntrees(){
-    url = conf.url + '/api/entrees';
+    url = conf.url + '/api/entrees?sort=nom-asc';
     return fetch(url).catch(error => {
         console.error('Erreur lors de la récupération des entrées');
     });
