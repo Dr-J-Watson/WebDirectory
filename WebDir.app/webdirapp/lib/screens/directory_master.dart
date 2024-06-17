@@ -15,13 +15,15 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
   late Future<List<Entry>> entries;
   final EntryProvider entryProvider = EntryProvider();
   bool sortOrder = true;
-  String? filterValue = "none";
+  String? filterValue;
   String? researchValue;
+  List<DropdownMenuItem<String>> services = [];
   
 
   @override
   void initState() {
     super.initState();
+    services = entryProvider.getServices();
   }
 
   @override
@@ -64,27 +66,15 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
                         children: <Widget>[
                           DropdownButton(
                             value: filterValue,
-                            items: const [
-                              DropdownMenuItem(
-                                value: 'none',
-                                child: Text('Aucun'),
-                              ),
-                            ], 
+                            items: services,
                             onChanged: (String? value) {
                               setState(() {
                                 filterValue = value;
+                                Navigator.pop(context);
                               });
                             },
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child:ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Valider'),
-                          ),
-                          ),
+                          
                         ],
                       ),
                     );
@@ -103,7 +93,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
       ),
       body: Consumer<EntryProvider>(builder: (context, entryProvider, child) {
         return FutureBuilder(
-          future: entryProvider.getEntries(sortOrder,researchValue),
+          future: entryProvider.getEntries(sortOrder,researchValue,filterValue),
           builder: (BuildContext context, AsyncSnapshot<List<Entry>> snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting) {
               return const Center(

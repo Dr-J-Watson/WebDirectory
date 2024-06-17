@@ -27,7 +27,7 @@ class Entry{
   Entry.fromJson(Map<String, dynamic> json)
       : lastName = json['entree']['lastName'],
         firstName = json['entree']['firstName'],
-        function = 'temp', //json['entree']['fonction'],
+        function = json['entree']['fonction'],
         numBureau = json['entree']['numBureau'].toString(),
         telMobile = json['entree']['telFixe'],
         telFixe = json['entree']['telMobile'],
