@@ -31,7 +31,7 @@ class EntryProvider extends ChangeNotifier {
           } else {
             final entrydata = jsonDecode(entryResponse.body);
             try {
-              final Entry entry = Entry.fromJson(entrydata['entree']);
+              final Entry entry = Entry.fromJson(entrydata);
                 if(researchValue != null && researchValue.isNotEmpty){
                    String fullInfo = '${entry.firstName} ${entry.lastName} ${entry.email} ${entry.numBureau}'.toLowerCase();
                   if(fullInfo.contains(researchValue)){
