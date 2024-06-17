@@ -5,7 +5,7 @@ use WebDir\core\appli\infrastructure\Eloquent;
 
 require_once __DIR__ . '/../src/vendor/autoload.php';
 
-Eloquent::init(__DIR__ . '/../src/conf/webdir.conf.ini.dist');
+Eloquent::init(__DIR__ . '/../src/conf/webdir.db.conf.ini');
 
 $app = require_once __DIR__ . '/../src/conf/boostrap.php';
 

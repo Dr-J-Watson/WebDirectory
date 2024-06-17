@@ -42,7 +42,7 @@ class GetServicesAction extends AbstractAction
                     'description' => $service['description']
                 ],
                 'links' => [
-                    'colections' => [
+                    'collections' => [
                         'href' => '/api/services/' . $service['id'] . '/entrees'
                     ]
                 ]
