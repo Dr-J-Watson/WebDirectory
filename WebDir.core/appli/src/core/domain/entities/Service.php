@@ -4,7 +4,7 @@ namespace WebDir\core\appli\core\domain\entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departement extends Model{
+class Service extends Model{
 
 
     protected $table = 'department';
@@ -15,7 +15,11 @@ class Departement extends Model{
     protected $fillable = ['id', 'nom', 'etage', 'description'];
 
     public function personne(){
-        return $this->belongsToMany('WebDir\core\appli\core\domain\entities\Entree', 'personne_departement',
-        'id','uuid');
+        return $this->belongsToMany(
+            'WebDir\core\api\core\domain\entities\Entree',
+            'entree_department',
+            'department_id',
+            'entree_id'
+        );
     }
 }

@@ -2,13 +2,13 @@
 
 namespace WebDir\core\appli\core\services\departement;
 
-use WebDir\core\appli\core\domain\entities\Departement;
-use WebDir\core\appli\core\services\departement\DepartementServiceInterface;
+use WebDir\core\appli\core\domain\entities\Service;
+use WebDir\core\appli\core\services\departement\ServicesServiceInterface;
 
-class DepartementService implements DepartementServiceInterface{
+class ServicesService implements ServicesServiceInterface{
 
     public function addDepartement(array $departement){
-        $dep = new Departement();
+        $dep = new Service();
         $dep->nom = $departement['name'];
         $dep->etage = $departement['etage'];
         $dep->description = $departement['desc'];

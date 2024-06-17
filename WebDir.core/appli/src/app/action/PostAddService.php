@@ -5,14 +5,14 @@ namespace WebDir\core\appli\app\action;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use WebDir\core\appli\app\action\AbstractAction;
-use WebDir\core\appli\core\services\departement\DepartementService;
+use WebDir\core\appli\core\services\departement\ServicesService;
 
-class PostAddDepartement extends AbstractAction{
+class PostAddService extends AbstractAction{
 
-    private DepartementService $departementService;
+    private ServicesService $departementService;
 
     public function __construct(){
-        $this->departementService = new DepartementService();
+        $this->departementService = new ServicesService();
     }
     function __invoke(Request $rq, Response $rs, $args): Response{
         try{

@@ -2,7 +2,7 @@
 
 namespace WebDir\core\appli\core\services\departement;
 
-interface DepartementServiceInterface
+interface ServicesServiceInterface
 {
     public function addDepartement(array $departement);
 }
