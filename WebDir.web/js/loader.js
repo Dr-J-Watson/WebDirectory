@@ -1,8 +1,8 @@
 import conf from './config.js';
 
-function loadEntree(idEntree){
-    url = conf.url + '/entrees/';
-    fetch(url + idEntree)
+async function loadEntree(idEntree){
+    url = conf.url + '/api/entrees/';
+    await fetch(url + idEntree, {credentials: 'include'})
     .then(response => {
         if (response.ok) {
             return response.json();
@@ -13,7 +13,7 @@ function loadEntree(idEntree){
 }
 
 function loadService(idService){
-    url = conf.url + '/service/';
+    url = conf.url + 'api/services/';
     fetch(url + idService)
     .then(response => {
         if (response.ok) {
@@ -24,3 +24,16 @@ function loadService(idService){
     });
 }
 
+function loadEntrees(){
+    url = conf.url + '/api/entrees';
+    fetch(url)
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Erreur lors de la récupération des entrées');
+        }
+    });
+}
+
+export default { loadEntree, loadService, loadEntrees };
