@@ -1,12 +1,11 @@
-import loader from "./loader";
+import Handlebars from 'handlebars';
 
-async function displayEntrees(data){
-    console.log(data);
+async function displayAllEntrees(data){
     const container = document.getElementById('main');
     const templateSource = document.getElementById('listEntreeTemplate').innerHTML;
     const template = Handlebars.compile(templateSource);
-    const html = template(data);
+    const html = template({entrees : data});
     container.innerHTML = html;
 }
 
-export default { displayEntrees };
+export default { displayAllEntrees };
