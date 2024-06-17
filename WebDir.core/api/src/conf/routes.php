@@ -21,13 +21,6 @@ return function(\Slim\App $app): \Slim\App {
 
     $app->get('/api/services/{id}/entrees[/]', GetEntreesByServiceIdAction::class)->setName('entrees_by_service_id');
 
-    $app->get('/image/{nom}', function ($request, $response, $args) {
-        $nom = $args['nom'];
-        $image = file_get_contents(__DIR__ . '/../../public/assets/image/' . $nom);
-        $response->write($image);
-        return $response->withHeader('Content-Type', 'image/jpeg');
-    });
-
     return $app;
 
 };
