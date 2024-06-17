@@ -8,7 +8,12 @@ async function displayEntree(data){
     let services = data.services;
     let image = conf.imgurl + data.image;
     let initiales = {nom : data.lastName[0], prenom : data.firstName[0]};
-    const html = template({data : data, services : services, image : image, initiales : initiales});
+    let html;
+    if(data.image === null){
+        html = template({data : data, services : services, initiales : initiales});
+    }else{
+        html = template({data : data, services : services, image : image, initiales : initiales});
+    }
     container.innerHTML = html;
 }
 
