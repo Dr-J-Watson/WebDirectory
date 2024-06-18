@@ -40,9 +40,9 @@ class SearchEntreesInServiceAction extends AbstractAction
             return $rs->withStatus(204); // No Content
         }
 
-        $query = $rq->getQueryParams()['q'];
+        $query = $rq->getQueryParams()['q'] ?? null;
         $sort = $rq->getQueryParams()['sort'] ?? null;
-        $entreesData = $this->entreeService->searchEntreesInService($query, $args['id'], $sort);
+        $entreesData = $this->entreeService->searchEntreesInService($args['id'], $query, $sort);
 
         $entreesFormatted = [];
         foreach ($entreesData as $entree) {

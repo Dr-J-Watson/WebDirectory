@@ -40,7 +40,7 @@ class SearchEntreesAction extends AbstractAction
             return $rs->withStatus(204); // No Content
         }
 
-        $query = $rq->getQueryParams()['q'];
+        $query = $rq->getQueryParams()['q'] ?? null;
         $sort = $rq->getQueryParams()['sort'] ?? null;
         $entreesData = $this->entreeService->searchEntrees($query , $sort);
 
