@@ -91,7 +91,7 @@ class EntreeService implements EntreeServiceInterface
         }
 
         // Faire une union entre query et entreesinservice
-        $entrees = array_merge($entreesinservice, $query->get()->toArray());
+        $entrees = array_merge($entreesinservice, $query->get());
         return $entrees->toArray();
     }
     
