@@ -17,7 +17,6 @@ class _EntryPreviewState extends State<EntryPreview> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
       child:GestureDetector(
       child: ListTile(
         leading: CircleAvatar(
@@ -29,7 +28,7 @@ class _EntryPreviewState extends State<EntryPreview> {
               : null,
         ),
         title: Text('${widget.entry.firstName} ${widget.entry.lastName.toUpperCase()}'),
-        subtitle: Text('Service(s)/Département(s) : ${widget.entry.services.join(', ')}'),
+        subtitle: Text('${widget.entry.services.join(', ')}'),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           //side: const BorderSide(color: Color.fromARGB(255, 158, 158, 158), width: 1.0),

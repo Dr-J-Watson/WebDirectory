@@ -22,7 +22,6 @@ class _EntryDetailsState extends State<EntryDetails> {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.yellow,
         shape: const Border(
           bottom: BorderSide(
             color: Colors.black,
