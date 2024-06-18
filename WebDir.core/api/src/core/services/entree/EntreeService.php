@@ -96,8 +96,7 @@ class EntreeService implements EntreeServiceInterface
             }
         }
     
-        $entrees = $query->get();
-        return $entrees->toArray();
+        return $query->toArray();
     }
     
 }
