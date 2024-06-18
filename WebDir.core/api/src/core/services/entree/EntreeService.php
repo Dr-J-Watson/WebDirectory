@@ -86,6 +86,8 @@ class EntreeService implements EntreeServiceInterface
         {
             $query->where('lastName', 'like', '%' . $search . '%')
             ->orWhere('firstName', 'like', '%' . $search . '%');
+        }else{
+            return $this->getEntreesByServiceId($serviceId, $sort);
         }
     
         if ($sort) {
@@ -96,8 +98,7 @@ class EntreeService implements EntreeServiceInterface
             }
         }
     
-        $entrees = $query->get();
-        return $entrees->toArray();
+        return $query->get()->toArray();
     }
     
 }
