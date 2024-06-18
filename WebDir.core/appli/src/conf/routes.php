@@ -39,6 +39,7 @@ return function (\Slim\App $app): \Slim\App {
 
     // Affichage liste entree
     $app->get('/home', GetHomeAction::class)->setName('home');
+    $app->post('/home', GetHomeAction::class)->setName('home');
 
     return $app;
 };
