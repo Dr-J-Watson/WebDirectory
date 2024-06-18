@@ -53,6 +53,7 @@ services:
   php_appli:
     image: canals/php
     container_name: php_appli
+    working_dir: /var/www/src
     restart: unless-stopped
     ports:
       - "64992:80"
@@ -68,6 +69,7 @@ services:
   php_api:
     image: canals/php
     container_name: php_api
+    working_dir: /var/www/src
     restart: unless-stopped
     ports:
       - "64993:80"
