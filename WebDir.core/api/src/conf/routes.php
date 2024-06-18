@@ -7,6 +7,7 @@ use WebDir\core\api\app\actions\GetEntreesAction;
 use WebDir\core\api\app\actions\GetEtreeByIdAction;
 use WebDir\core\api\app\actions\GetEntreesByServiceIdAction;
 use WebDir\core\api\app\actions\SearchEntreesAction;
+use WebDir\core\api\app\actions\SearchEntreesInServiceAction;
 
 
 return function(\Slim\App $app): \Slim\App {
