@@ -35,13 +35,9 @@
         <div>
             <label for="departement">Service / Departement: </label>
             <select id="departement" name="departement[]" multiple="yes">
-                <option value="Gardien">test1</option>
-                <option value="Patate">test2</option>
-                <option value="test3">test3</option>
-                <option value="test4">test4</option>
-                <option value="test5">test5</option>
-                <option value="test6">test6</option>
-                <option value="test7">test7</option>
+                {% for dep in department %}
+                    <option value="{{ dep['nom'] }}"> {{ dep['nom'] }}</option>
+                {% endfor %}
             </select>
         </div>
 

@@ -55,10 +55,15 @@ class EntreeService implements EntreeServiceInterface
     }
     
 
-    public function searchEntrees(string $search, ?string $sort = null): array
+    public function searchEntrees(?string $search, ?string $sort = null): array
     {
-        $query = Entree::where('lastName', 'like', '%' . $search . '%')
+        if ($search != null)
+        {
+            $query = Entree::where('lastName', 'like', '%' . $search . '%')
             ->orWhere('firstName', 'like', '%' . $search . '%');
+        }else{
+            return $this->getEntrees($sort);
+        }
     
         if ($sort) {
             if ($sort === 'nom-asc') {
@@ -72,12 +77,18 @@ class EntreeService implements EntreeServiceInterface
         return $entrees->toArray();
     }
 
-    public function searchEntreesInService(string $search, string $serviceId, ?string $sort = null): array
+    public function searchEntreesInService(string $serviceId, ?string $search, ?string $sort = null): array
     {
         $service = Service::findOrFail($serviceId);
-        $query = $service->entree()
-            ->where('lastName', 'like', '%' . $search . '%')
+        $query = $service->entree();
+
+        if ($search != null)
+        {
+            $query->where('lastName', 'like', '%' . $search . '%')
             ->orWhere('firstName', 'like', '%' . $search . '%');
+        }else{
+            return $this->getEntreesByServiceId($serviceId, $sort);
+        }
     
         if ($sort) {
             if ($sort === 'nom-asc') {
@@ -87,8 +98,7 @@ class EntreeService implements EntreeServiceInterface
             }
         }
     
-        $entrees = $query->get();
-        return $entrees->toArray();
+        return $query->get()->toArray();
     }
     
 }
