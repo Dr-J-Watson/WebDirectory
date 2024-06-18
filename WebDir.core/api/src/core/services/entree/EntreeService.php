@@ -89,7 +89,7 @@ class EntreeService implements EntreeServiceInterface
         }
 
         // Faire une union entre query et entreesinservice
-        $entrees = array_merge($entreesinservice, $searchentrees);
+        $entrees = array_intersect($entreesinservice, $searchentrees);
         return $entrees;
     }
     
