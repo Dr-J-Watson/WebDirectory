@@ -83,7 +83,7 @@ class EntreeService implements EntreeServiceInterface
 
         if ($search != null)
         {
-            $query = Entree::where('lastName', 'like', '%' . $search . '%')
+            $query = $entreesinservice::where('lastName', 'like', '%' . $search . '%')
             ->orWhere('firstName', 'like', '%' . $search . '%');
         }else{
             return $entreesinservice;
