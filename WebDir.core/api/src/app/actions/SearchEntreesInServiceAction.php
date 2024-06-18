@@ -9,7 +9,7 @@ use WebDir\core\api\core\services\entree\EntreeServiceInterface;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
-class SearchEntreesInSereviceAction extends AbstractAction
+class SearchEntreesInServiceAction extends AbstractAction
 {
     private EntreeServiceInterface $entreeService;
     private ServiceServiceInterface $serviceService;
