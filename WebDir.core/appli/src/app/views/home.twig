@@ -37,7 +37,7 @@
                         {% set departments = [] %}
                         {% for departement in department %}
                             {% for dep in departement %}
-                                {% if dep.pivot.personne_id == personne.uuid %}
+                                {% if dep.pivot.entree_id == personne.uuid %}
                                     {% set departments = departments|merge([dep.nom]) %}
                                 {% endif %}
                             {% endfor %}
