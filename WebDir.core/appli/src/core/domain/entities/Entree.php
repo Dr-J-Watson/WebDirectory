@@ -9,7 +9,7 @@ class Entree extends Model{
 
     use HasUuids;
 
-    protected $table = 'personne';
+    protected $table = 'entree';
     protected $primaryKey = 'uuid';
     public $timestamps = false;
     public $incrementing = false;
@@ -20,8 +20,8 @@ class Entree extends Model{
     public function department(){
         return $this->belongsToMany(
             'WebDir\core\appli\core\domain\entities\Service',
-            'personne_department',
-            'personne_id',
+            'entree_department',
+            'entree_id',
             'department_id'
         );
     }

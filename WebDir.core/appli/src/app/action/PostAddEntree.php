@@ -27,7 +27,8 @@ class PostAddEntree extends AbstractAction{
             if($personne['lastName'] !== filter_var($personne['lastName'], FILTER_SANITIZE_SPECIAL_CHARS) ||
                 $personne['firstName'] !== filter_var($personne['firstName'], FILTER_SANITIZE_SPECIAL_CHARS ) ||
                 $personne['numBureau'] !== filter_var($personne['numBureau'], FILTER_SANITIZE_SPECIAL_CHARS ) ||
-                !filter_var($personne['email'], FILTER_VALIDATE_EMAIL ))
+                !filter_var($personne['email'], FILTER_VALIDATE_EMAIL ) ||
+                $this->personneService->inBD($personne))
             {
                 throw new \Exception("Erreur de saisie");
             }
