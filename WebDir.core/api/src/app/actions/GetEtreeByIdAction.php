@@ -9,6 +9,8 @@ use WebDir\core\api\core\services\entree\EntreeServiceInterface;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
+use WebDir\core\api\src\app\utils\CorsUtility;
+
 class GetEtreeByIdAction extends AbstractAction
 {
     private EntreeServiceInterface $entreeService;
@@ -22,17 +24,6 @@ class GetEtreeByIdAction extends AbstractAction
 
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
-
-        // Ajouter les en-têtes CORS
-        $rs = $rs->withHeader('Access-Control-Allow-Origin', '*')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
-            ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-            ->withHeader('Content-Type', 'application/json');
-
-        // Vérifier si la requête est une requête OPTIONS (pré-vol)
-        if ($rq->getMethod() === 'OPTIONS') {
-            return $rs->withStatus(204); // No Content
-        }
 
         $entree = $this->entreeService->getEntreeById($args['id']);
         $entreeFormatted = [
@@ -58,8 +49,7 @@ class GetEtreeByIdAction extends AbstractAction
             ]
         ];
 
-        $responseContentJson = json_encode($responseContent , JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        $rs->getBody()->write($responseContentJson);
+        $rs = CorsUtility::handle($rq, $rs, $responseContent);
 
         return $rs;
     }
