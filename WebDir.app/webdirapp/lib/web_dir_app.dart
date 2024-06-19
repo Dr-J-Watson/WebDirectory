@@ -49,6 +49,9 @@ class _WebDirAppState extends State<WebDirApp> {
           tileColor: Colors.white,
           textColor: Colors.black
         ),
+        dialogTheme: const DialogTheme(
+          backgroundColor: Colors.white
+        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.yellow
         ),
@@ -64,6 +67,9 @@ class _WebDirAppState extends State<WebDirApp> {
         listTileTheme: const ListTileThemeData(
           tileColor: Color.fromARGB(255, 36, 36, 36),
           textColor: Colors.white
+        ),
+        dialogTheme: const DialogTheme(
+          backgroundColor: Color.fromARGB(255, 38, 38, 38)
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.orange
