@@ -29,17 +29,17 @@ function getSearchEntrees(text){
     loader_default.loadSearchEntrees(text)
     .then(data => {
         data.json().then(async data => {
-            await searchEntrees_ui.displaySearchEntrees(data.entrees);
+            await searchEntrees_ui.displaySearchEntrees(data.entrees, 'Aucun tri de service');
             addEvent();
         });
     });
 }
 
-function getServiceSearchEntrees(url){
+function getServiceSearchEntrees(url, tri="Aucun tri de service"){
     loader_default.loadServiceSearchEntrees(url)
     .then(data => {
         data.json().then(async data => {
-            await searchEntrees_ui.displaySearchEntrees(data.entrees);
+            await searchEntrees_ui.displaySearchEntrees(data, tri);
             addEvent();
         });
     });
@@ -68,10 +68,11 @@ function addEvent(){
                 tri = document.getElementById('tri').value;
             }
             if(document.getElementById('searchInput').value !== '' && document.getElementById('select').value !== '/api/entrees'){
+                let service = document.getElementById('select').options[document.getElementById('select').selectedIndex].text;
                 if(tri !== ""){
-                    getServiceSearchEntrees(document.getElementById('select').value + '/search?q=' + document.getElementById('searchInput').value + '&' + tri);
+                    getServiceSearchEntrees(document.getElementById('select').value + '/search?q=' + document.getElementById('searchInput').value + '&' + tri, service);
                 }else{
-                    getServiceSearchEntrees(document.getElementById('select').value + '/search?q=' + document.getElementById('searchInput').value);
+                    getServiceSearchEntrees(document.getElementById('select').value + '/search?q=' + document.getElementById('searchInput').value  + tri, service);
                 }
             }else if(document.getElementById('searchInput').value !== ''){
                 if(tri !== ""){

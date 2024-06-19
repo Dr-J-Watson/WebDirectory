@@ -74,6 +74,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
                                 Navigator.pop(context);
                               });
                             },
+                            dropdownColor: Theme.of(context).primaryColor,
                           ),
                           
                         ],

@@ -4,6 +4,7 @@
         <h1>Liste des personnes</h1>
         <form action="{{ url_for('home') }}" method="post">
             <select id="departement" name="departement">
+                <option value="tous">Tous</option>
                 {% set departments = [] %}
                 {% for departement in department %}
                     {% for dep in departement %}
@@ -37,7 +38,7 @@
                         {% set departments = [] %}
                         {% for departement in department %}
                             {% for dep in departement %}
-                                {% if dep.pivot.personne_id == personne.uuid %}
+                                {% if dep.pivot.entree_id == personne.uuid %}
                                     {% set departments = departments|merge([dep.nom]) %}
                                 {% endif %}
                             {% endfor %}

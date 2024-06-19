@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter/material.dart';
 import 'package:webdirapp/models/entry.dart';
@@ -67,9 +68,9 @@ class EntryProvider extends ChangeNotifier {
   Future<void> _fetchServices() async {
     _services.clear();
     _services.add(
-      const DropdownMenuItem(
+      DropdownMenuItem(
       value: null,
-      child: Text("Aucun filtre"),
+      child: Text("Aucun filtre", style: TextStyle(color: ThemeData().brightness != Brightness.light ? Colors.black : Colors.white)),
       )
       );
     final response = await http.get(Uri.parse('${dotenv.env['BASE_URL']}${dotenv.env['PORT']}/api/services'), headers: {'Accept-Charset': 'utf-8'});
@@ -81,7 +82,7 @@ class EntryProvider extends ChangeNotifier {
         _services.add(
           DropdownMenuItem(
           value: service['service']['id'].toString(),
-          child: Text(nom),
+          child: Text(nom, style: TextStyle(color: ThemeData().brightness != Brightness.light ? Colors.black : Colors.white)),
           )
           );
       }

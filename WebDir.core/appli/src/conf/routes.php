@@ -7,6 +7,7 @@ use WebDir\core\appli\app\action\GetAddEntreeForm;
 use WebDir\core\appli\app\action\GetAddUserForm;
 use WebDir\core\appli\app\action\GetConnexion;
 use WebDir\core\appli\app\action\GetHomeAction;
+use WebDir\core\appli\app\action\GetLogout;
 use WebDir\core\appli\app\action\PostAddService;
 use WebDir\core\appli\app\action\PostAddEntree;
 use WebDir\core\appli\app\action\PostAddUser;
@@ -44,6 +45,10 @@ return function (\Slim\App $app): \Slim\App {
         ->setName('addUser');
     $app->post('/add/user', PostAddUser::class)
         ->setName('addUser');
+
+    // Logout
+    $app->get('/deconnexion', GetLogout::class)
+        ->setName('deconnexion');
 
     // Affichage liste entree
     $app->get('/home', GetHomeAction::class)->setName('home');

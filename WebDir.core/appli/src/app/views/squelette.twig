@@ -17,7 +17,12 @@
         {% if session['user'].role is defined and session['user'].role == 100 %}
             <a href="{{ url_for('addUser') }}">Ajouter User</a>
         {% endif %}
-        <a href="{{ url_for('connexion') }}">Connexion</a>
+        {% if session['user'] is defined %}
+            <a href="{{ url_for('deconnexion') }}">Deconnexion</a>
+        {% else %}
+            <a href="{{ url_for('connexion') }}">Connexion</a>
+        {% endif %}
+
     </nav>
 
 </header>

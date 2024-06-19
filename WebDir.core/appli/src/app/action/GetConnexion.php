@@ -13,6 +13,6 @@ class GetConnexion extends AbstractAction{
 
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'Connexion.twig', ['session' => $_SESSION['user']]);
+        return $view->render($rs, 'Connexion.twig', ['session' => $_SESSION['user'] ?? []]);
     }
 }

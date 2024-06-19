@@ -25,21 +25,23 @@ class GetHomeAction extends AbstractAction {
         //var_dump($_SESSION['user']);
         //die();
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $personnes = $this->entreeService->getEntreeByService($_POST['departement']);
-            usort($personnes, function($a, $b) {
-                return strcmp($a['lastName'], $b['lastName']);
-            });
 
-            $entrees = Entree::all();
-            $departments = [];
-            foreach ($entrees as $entree) {
-                if($entree->department){
-                    array_push($departments,$entree->department->toArray());
+            if($_POST['departement'] !== "tous"){
+                $personnes = $this->entreeService->getEntreeByService($_POST['departement']);
+
+
+                $entrees = Entree::all();
+                $departments = [];
+                foreach ($entrees as $entree) {
+                    if($entree->department){
+                        array_push($departments,$entree->department->toArray());
+                    }
                 }
+
+                $view = Twig::fromRequest($rq);
+                return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'session' => $_SESSION['user']]);
             }
 
-            $view = Twig::fromRequest($rq);
-            return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'session' => $_SESSION['user']]);
         }
 
         $personnes = $this->entreeService->getEntree();

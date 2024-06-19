@@ -1,0 +1,132 @@
+* {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.entrees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.entree {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.24s;
+}
+
+.entree:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.entree ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: azure;
+    border: 1px solid #000;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilePic img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.profilePic .initiales {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.voir {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #ffff00;
+    transition: 0.24s;
+}
+
+.voir:hover {
+    cursor: pointer;
+    background-color: #ffcc00;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffff00;
+    border-bottom: 2px solid #000;
+    color: #000;
+}
+
+nav {
+    display: flex;
+    justify-content: left   ;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+}
+
+nav input {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+nav select {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+nav button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: #000;
+    color: #ffffff;
+    transition: 0.24s;
+}
+
+nav button:hover {
+    cursor: pointer;
+    background-color: #323232;
+}
+
+h2{
+    text-align: center;
+}
