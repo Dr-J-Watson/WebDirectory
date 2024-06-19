@@ -79,12 +79,12 @@ class EntreeService implements EntreeServiceInterface
 
     public function searchEntreesInService(string $serviceId, ?string $search, ?string $sort = null): array
     {
-        $service = Service::findOrFail($serviceId);
-        $query = $service->entree();
+
 
         if ($search != null)
         {
-            $query->where('lastName', 'like', '%' . $search . '%')
+            $service = Service::findOrFail($serviceId);
+            $query = $service->entree()->where('lastName', 'like', '%' . $search . '%')
             ->orWhere('firstName', 'like', '%' . $search . '%');
         }else{
             return $this->getEntreesByServiceId($serviceId, $sort);
