@@ -1,6 +1,6 @@
 <?php
 
-namespace WebDir\core\api\src\app\utils;
+namespace WebDir\core\api\app\utils;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

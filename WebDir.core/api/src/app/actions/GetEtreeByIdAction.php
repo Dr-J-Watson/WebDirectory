@@ -9,7 +9,7 @@ use WebDir\core\api\core\services\entree\EntreeServiceInterface;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
-use WebDir\core\api\src\app\utils\CorsUtility;
+use WebDir\core\api\app\utils\CorsUtility;
 
 class GetEtreeByIdAction extends AbstractAction
 {
