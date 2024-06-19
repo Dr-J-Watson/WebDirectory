@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
   <title>SAÉ</title>
 </head>
 <body>
@@ -11,6 +13,9 @@
 
 <script id="listEntreeTemplate" type="text/x-handlebars-template">
 	<section id="list">
+    <header>
+    <h1>Web Directory, l'annuaire en ligne</h1>
+    <nav>
     <input type="text" id="searchInput" placeholder="Rechercher un nom">
     <select id="select">
       <option value="/api/entrees">Tous les services</option>
@@ -24,23 +29,36 @@
       <option value="sort=nom-desc">Nom (Z-A)</option>
     </select>
     <button id="search">Rechercher</button>
-    <h2>{{tri}}</h2>
+    </nav>  
+  </header>
+    <h2>Liste des contacts ({{tri}})</h2>
+    <div class="entrees">
     {{#if entrees}}
       {{#each entrees}}
-        <img src="{{this.entree.image}}">
-        <h3>{{this.entree.lastName}} {{this.entree.firstName}}</h3> 
-        <button class="voir" url="{{this.links.self.href}}">Voir</button>
-        <p>Services :</p>
+      <div class="entree">
+        <div class="profilePic">
+          {{#if this.entree.image}}
+            <img src="{{this.entree.image}}">
+          {{else}}
+            <div class="initiales">{{this.entree.initiales}}</div>
+          {{/if}}
+        </div>
+        <h3>{{this.entree.firstName}} <span class="uppercase">{{this.entree.lastName}}</span></h3> 
+        <div>
         <ul>
           {{#each this.entree.services}}
             <li>{{this}}</li>
           {{/each}}
         </ul>
+        </div>
+        <button class="voir" url="{{this.links.self.href}}">Voir</button>
+      </div>
       {{/each}}
     {{else}}
     <p>Aucune entrée dans ce service</p>
     <button id="home">Home</button>
     {{/if}}
+    </div>
 	 </section>
 </script>
 
