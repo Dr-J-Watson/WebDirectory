@@ -10,7 +10,6 @@ services:
   #mysql et adminer
   db:
     image: mysql:latest
-    container_name: mysql
     restart: unless-stopped
     # les variables d'environnement
     environment:
@@ -29,7 +28,6 @@ services:
 
   # adminer:
   #   image: adminer
-  #   container_name: adminer
   #   restart: always
   #   ports:
   #     - "64991:8080"
@@ -39,7 +37,6 @@ services:
   #phpmyadmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     restart: unless-stopped
     ports:
       - "64991:80"
@@ -52,7 +49,6 @@ services:
   #canals/php pour l'appli
   php_appli:
     image: canals/php
-    container_name: php_appli
     working_dir: /var/www/src
     restart: unless-stopped
     ports:
@@ -68,7 +64,6 @@ services:
   #canals/php pour l'api
   php_api:
     image: canals/php
-    container_name: php_api
     working_dir: /var/www/src
     restart: unless-stopped
     ports:
