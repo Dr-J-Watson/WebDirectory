@@ -22,7 +22,7 @@ async function displayAllEntrees(data){
     const templateSource = document.getElementById('listEntreeTemplate').innerHTML;
     const template = Handlebars.compile(templateSource);
     let services = await fetch(conf.url + '/api/services').then(data => data.json());
-    const html = template({entrees : data, services : services.services, tri : 'Aucun tri', images : images});  
+    const html = template({entrees : data, services : services.services, tri : 'Aucun tri de service', images : images});  
     container.innerHTML = html;
 }
 
