@@ -29,13 +29,13 @@ function getSearchEntrees(text){
     loader_default.loadSearchEntrees(text)
     .then(data => {
         data.json().then(async data => {
-            await searchEntrees_ui.displaySearchEntrees(data.entrees);
+            await searchEntrees_ui.displaySearchEntrees(data.entrees, 'Aucun tri de service');
             addEvent();
         });
     });
 }
 
-function getServiceSearchEntrees(url, tri=""){
+function getServiceSearchEntrees(url, tri="Aucun tri de service"){
     loader_default.loadServiceSearchEntrees(url)
     .then(data => {
         data.json().then(async data => {

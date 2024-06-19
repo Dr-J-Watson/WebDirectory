@@ -11,7 +11,10 @@ async function displaySearchEntrees(data, tri){
     const templateSource = document.getElementById('listEntreeTemplate').innerHTML;
     const template = Handlebars.compile(templateSource);
     let services = await fetch(conf.url + '/api/services').then(data => data.json());
-    const html = template({entrees : data, services : services.services, tri : tri});  
+    if(data.entrees.length === 0){
+        data = null;
+    }
+    const html = template({entrees : data, services : services.services, tri : tri});
     container.innerHTML = html;
 }
 
