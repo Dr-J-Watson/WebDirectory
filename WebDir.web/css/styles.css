@@ -130,3 +130,132 @@ nav button:hover {
 h2{
     text-align: center;
 }
+
+.hide {
+    display: none;
+}
+
+#popup-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    text-align: center;
+}
+
+#popup {
+    margin: 25px auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 40%;
+}
+
+#popup-content img, #popup-content .profilePic{
+    margin: 10px auto;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: x-large;
+}
+
+#popup-content h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#popup-content p {
+    margin: 5px;
+}
+
+#contactList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#contactList .contactTile:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#contactList h4{
+    margin: 0;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+
+}
+
+.contactTile{
+    padding: 20px;
+    background-color: #eee;
+    transition: 0.24s;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    text-align: left;
+}
+
+.contactTile:hover{
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.contactTile p{
+    margin: 0;
+
+}
+
+#popup-header{
+    background-color: #ffff00;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: left;
+    border-bottom: 2px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+#popup-header p{
+    font-size: large;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+#popup-header button{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-top-left-radius: 20px;
+    padding: 20px;
+    font-size: large;
+    transition: 0.24s;
+}
+
+#popup-header button:hover{
+    cursor: pointer;
+    background-color: #323232;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.service{
+    margin: 0px 5px ;
+}
+
+.info{
+    padding: 10px;
+}
