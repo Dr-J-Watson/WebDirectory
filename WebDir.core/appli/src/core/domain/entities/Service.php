@@ -17,9 +17,9 @@ class Service extends Model{
     public function personne(){
         return $this->belongsToMany(
             'WebDir\core\api\core\domain\entities\Entree',
-            'personne_department',
+            'entree_department',
             'department_id',
-            'personne_id'
+            'entree_id'
         );
     }
 }
