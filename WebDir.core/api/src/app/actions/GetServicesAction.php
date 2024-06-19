@@ -7,6 +7,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use WebDir\core\api\core\services\service\ServiceService;
 use WebDir\core\api\core\services\service\ServiceServiceInterface;
 
+use WebDir\core\api\src\app\utils\CorsUtility;
+
 class GetServicesAction extends AbstractAction
 {
     private ServiceServiceInterface $serviceService;
@@ -19,16 +21,6 @@ class GetServicesAction extends AbstractAction
     public function __invoke(Request $rq, Response $rs, $args): Response
     {
 
-        // Ajouter les en-têtes CORS
-        $rs = $rs->withHeader('Access-Control-Allow-Origin', '*')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST')
-            ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-            ->withHeader('Content-Type', 'application/json');
-
-        // Vérifier si la requête est une requête OPTIONS (pré-vol)
-        if ($rq->getMethod() === 'OPTIONS') {
-            return $rs->withStatus(204); // No Content
-        }
 
         $servicesData = $this->serviceService->getServices();
 
@@ -55,8 +47,7 @@ class GetServicesAction extends AbstractAction
             'services' => $servicesFormatted
         ];
 
-        $responseContentJson = json_encode($responseContent , JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        $rs->getBody()->write($responseContentJson);
+        $rs = CorsUtility::handle($rq, $rs, $responseContent);
 
         return $rs;
     }
