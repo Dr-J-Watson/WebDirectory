@@ -28,7 +28,8 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return RefreshIndicator(
+      child: Scaffold(
       appBar: AppBar(
         
         title: TextField(
@@ -84,7 +85,7 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
             ),
           ),
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).primaryColor,
         shape: const Border(
           bottom: BorderSide(
             color: Colors.black,
@@ -120,6 +121,11 @@ class _DirectoryMasterState extends State<DirectoryMaster> {
         );
       }
     ),
+    ),
+    onRefresh: () async {
+      setState(() {
+      });
+    },
     );
   }
 }

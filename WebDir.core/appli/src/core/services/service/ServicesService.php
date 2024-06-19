@@ -19,4 +19,8 @@ class ServicesService implements ServicesServiceInterface{
         $a = Service::select('id')->whereIn('nom', $departements)->get();
         return $a;
     }
+
+    public function getServices(){
+        return Service::select('nom')->get();
+    }
 }
