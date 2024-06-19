@@ -14,6 +14,9 @@
         <a href="{{ url_for('home') }}">HOME</a>
         <a href="{{ url_for('addPersonne') }}">Ajouter personne</a>
         <a href="{{ url_for('addDepartement') }}">Gestion service/département</a>
+        {% if session['user'].role is defined and session['user'].role == 100 %}
+            <a href="{{ url_for('addUser') }}">Ajouter User</a>
+        {% endif %}
         <a href="{{ url_for('connexion') }}">Connexion</a>
     </nav>
 

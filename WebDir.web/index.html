@@ -11,17 +11,24 @@
 
 <script id="listEntreeTemplate" type="text/x-handlebars-template">
 	<section id="list">
+    <input type="text" id="searchInput" placeholder="Rechercher un nom">
     <select id="select">
-      <option value=""></option>
-      <option value="/api/entrees?sort=nom-asc">Aucun tri</option>
+      <option value="/api/entrees">Tous les services</option>
       {{#each services}}
         <option value="{{this.links.collections.href}}">{{this.service.nom}}</option>
       {{/each}}
     </select>
+    <select id="tri">
+      <option value="">Aucun tri</option>
+      <option value="sort=nom-asc">Nom (A-Z)</option>
+      <option value="sort=nom-desc">Nom (Z-A)</option>
+    </select>
+    <button id="search">Rechercher</button>
     <h2>{{tri}}</h2>
     {{#if entrees}}
       {{#each entrees}}
-        <h4>{{this.entree.lastName}} {{this.entree.firstName}}</h4> 
+        <img src="{{this.entree.image}}">
+        <h3>{{this.entree.lastName}} {{this.entree.firstName}}</h3> 
         <button class="voir" url="{{this.links.self.href}}">Voir</button>
         <p>Services :</p>
         <ul>
@@ -44,7 +51,7 @@
       {{else}}
       <p>{{initiales.nom}}{{initiales.prenom}}</p>
     {{/if}}
-    <h4>{{data.lastName}} {{data.firstName}}</h4>
+    <h3>{{data.lastName}} {{data.firstName}}</h3>
     <p>Fonction : {{data.fonction}}</p>
     <p>Numéro de bureau : {{data.numBureau}}</p>
     <p>Services :</p>
@@ -54,11 +61,11 @@
       {{/each}}
     </ul>
     <h4>Informations de contact</h4>
-    <div>
-      <a href="mailto:{{data.email}}">{{data.email}}</a>
-      <a href="tel:{{data.telMobile}}">{{data.telMobile}}</a>
-      <a href="tel:{{data.telFixe}}">{{data.telFixe}}</a>
-    </div>
+    <ul>
+      <li><a href="mailto:{{data.email}}">{{data.email}}</a></li>
+      <li><a href="tel:{{data.telMobile}}">{{data.telMobile}}</a></li>
+      <li><a href="tel:{{data.telFixe}}">{{data.telFixe}}</a></li>
+    </ul>
     <button id="home">Home</button>
 	 </section>
 </script>

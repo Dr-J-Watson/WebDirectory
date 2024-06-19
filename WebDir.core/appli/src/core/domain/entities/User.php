@@ -9,7 +9,7 @@ class User extends Model {
     use HasUuids;
 
     protected $table = 'user';
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = 'user_id';
     public $timestamps = false;
     public $incrementing = false;
     protected $keyType = 'string';
