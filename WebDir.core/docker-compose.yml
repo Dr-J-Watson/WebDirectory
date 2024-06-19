@@ -12,11 +12,8 @@ services:
     image: mysql:latest
     restart: unless-stopped
     # les variables d'environnement
-    environment:
-      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD:-root}
-      MYSQL_DATABASE: ${DATABASE:-webdir}
-      MYSQL_USER: ${USER:-webdir}
-      MYSQL_PASSWORD: ${PASSWORD:-webdir}
+    env_file:
+      - ./.env
     ports:
       - "64990:3306"
     volumes:
