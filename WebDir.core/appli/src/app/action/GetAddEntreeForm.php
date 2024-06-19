@@ -25,6 +25,6 @@ class GetAddEntreeForm extends AbstractAction{
         
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'FormAddEntree.twig', ['department' => $dep]);
+        return $view->render($rs, 'FormAddEntree.twig', ['department' => $dep, 'session' => $_SESSION['user']]);
     }
 }

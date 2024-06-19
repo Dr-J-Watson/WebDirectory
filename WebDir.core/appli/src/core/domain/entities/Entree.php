@@ -20,8 +20,8 @@ class Entree extends Model{
     public function department(){
         return $this->belongsToMany(
             'WebDir\core\appli\core\domain\entities\Service',
-            'entree_department',
-            'entree_id',
+            'personne_department',
+            'personne_id',
             'department_id'
         );
     }

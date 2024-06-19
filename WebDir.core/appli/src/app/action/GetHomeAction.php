@@ -22,6 +22,8 @@ class GetHomeAction extends AbstractAction {
     }
 
     function __invoke(Request $rq, Response $rs, $args): Response{
+        //var_dump($_SESSION['user']);
+        //die();
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $personnes = $this->entreeService->getEntreeByService($_POST['departement']);
             usort($personnes, function($a, $b) {
@@ -37,7 +39,7 @@ class GetHomeAction extends AbstractAction {
             }
 
             $view = Twig::fromRequest($rq);
-            return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments]);
+            return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'session' => $_SESSION['user']]);
         }
 
         $personnes = $this->entreeService->getEntree();
@@ -54,6 +56,6 @@ class GetHomeAction extends AbstractAction {
         }
 
         $view = Twig::fromRequest($rq);
-        return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments]);
+        return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'seesion' => $_SESSION['user']]);
     }
 }
