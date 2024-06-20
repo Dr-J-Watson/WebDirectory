@@ -1,4 +1,4 @@
-.env
+sql.env
 .idea
 WebDir.app/webdirapp/linux/flutter/generated_plugin_registrant.cc
 WebDir.app/webdirapp/linux/flutter/generated_plugin_registrant.h

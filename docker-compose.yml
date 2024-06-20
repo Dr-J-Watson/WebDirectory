@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     # les variables d'environnement
     env_file:
-      - ./.env
+      - ./sql.env
     ports:
       - "64990:3306"
     volumes:
