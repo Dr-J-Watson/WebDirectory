@@ -238,12 +238,11 @@ form input{
 }
 
 #researchTab{
-    width: 50%;
+    width: 10%;
     display: flex;
     position: relative;
     flex-direction: row;
     align-items: center;
-    width: auto;
     justify-content: space-between;
 }
 
