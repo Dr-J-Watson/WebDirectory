@@ -73,7 +73,18 @@ services:
     depends_on:
       - db
 
-
+  #httpd
+  httpd:
+    image: httpd:latest
+    restart: unless-stopped
+    ports:
+      - "64994:80"
+    volumes:
+      - ../WebDir.web/:/usr/local/apache2/htdocs
+    networks:
+      - webdir
+    depends_on:
+      - php_api
 
 
   
