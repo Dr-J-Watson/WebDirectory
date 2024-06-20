@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig;
 use WebDir\core\appli\core\domain\entities\Entree;
+use WebDir\core\appli\core\domain\entities\Service;
 use WebDir\core\appli\core\services\Entree\EntreeService;
 
 class GetHomeAction extends AbstractAction {
@@ -34,7 +35,7 @@ class GetHomeAction extends AbstractAction {
                 $departments = [];
                 foreach ($entrees as $entree) {
                     if($entree->department){
-                        array_push($departments,$entree->department->toArray());
+                        array_push($departments,Service::all()->toArray());
                     }
                 }
 
@@ -54,7 +55,7 @@ class GetHomeAction extends AbstractAction {
         $departments = [];
         foreach ($entrees as $entree) {
             if($entree->department){
-                array_push($departments,$entree->department->toArray());
+                array_push($departments,Service::all()->toArray());
             }
         }
 
