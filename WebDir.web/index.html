@@ -61,32 +61,47 @@
     {{/if}}
     </div>
 	 </section>
+   <div id="popup-bg" class="hide">
+    <div id="popup">
+      <div id="popup-header">
+        <button id="home">← Retour</button>
+        <p>Informations de <span id="firstNameInfo"></span> <span class="uppercase" id="lastNameInfo"></span> </p>
+      </div>
+      <div id="popup-content"></div>
+    </div>
+   </div>
 </script>
 
 <script id="entreeTemplate" type="text/x-handlebars-template">
-	<section id="entree">
+	<div id="entree">
     {{#if image}}
 		  <img src="{{image}}">
       {{else}}
-      <p>{{initiales.nom}}{{initiales.prenom}}</p>
+      <div class="profilePic">{{initiales.prenom}}{{initiales.nom}}</div>
     {{/if}}
     <h3>{{data.lastName}} {{data.firstName}}</h3>
-    <p>Fonction : {{data.fonction}}</p>
+    <p>{{data.fonction}}</p>
+    <div class="info">
     <p>Numéro de bureau : {{data.numBureau}}</p>
-    <p>Services :</p>
-    <ul>
+    <div class="services">
+    <div>Services :</div>
       {{#each services}}
-        <li>{{this}}</li>
+        
+        {{#if @last}}
+          <div class="service">{{this}}</div>
+        {{else}}
+        <div class="service">{{this}},</div>
+        {{/if}}
       {{/each}}
-    </ul>
-    <h4>Informations de contact</h4>
-    <ul>
-      <li><a href="mailto:{{data.email}}">{{data.email}}</a></li>
-      <li><a href="tel:{{data.telMobile}}">{{data.telMobile}}</a></li>
-      <li><a href="tel:{{data.telFixe}}">{{data.telFixe}}</a></li>
-    </ul>
-    <button id="home">Home</button>
-	 </section>
+    </div>
+  </div>
+    <div id="contactList">
+      <h4>Informations de contact</h4>
+      <div class="contactTile" onclick="window.open('mailto:{{data.email}}')"><p>Email : {{data.email}}</p></div>
+      <div class="contactTile" onclick="window.open('tel:{{data.telMobile}}')"><p>Téléphone (mobile) : {{data.telMobile}}</p></div>
+      <div class="contactTile" onclick="window.open('tel:{{data.telFixe}}')"><p>Téléphone (fixe) : {{data.telFixe}}</p></div>
+    </div>
+  </div>
 </script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>

@@ -2,7 +2,10 @@ import Handlebars from 'handlebars';
 import conf from './config.js';
 
 async function displayEntree(data){
-    const container = document.getElementById('main');
+    document.querySelector('#popup-bg').classList.remove('hide');
+    document.querySelector('#firstNameInfo').innerHTML = data.firstName;
+    document.querySelector('#lastNameInfo').innerHTML = data.lastName;
+    const container = document.getElementById('popup-content');
     const templateSource = document.getElementById('entreeTemplate').innerHTML;
     const template = Handlebars.compile(templateSource);
     let services = data.services;
