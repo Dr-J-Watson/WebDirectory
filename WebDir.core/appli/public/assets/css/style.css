@@ -238,11 +238,17 @@ form input{
 }
 
 #researchTab{
+    width: 50%;
+    display: flex;
     position: relative;
     flex-direction: row;
     align-items: center;
     width: auto;
     justify-content: space-between;
+}
+
+#researchTab button{
+    border-radius: 0;
 }
 
 button:hover{
