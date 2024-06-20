@@ -2,7 +2,7 @@
 {% block content %}
     <div>
         <h1>Liste des personnes</h1>
-        <form action="{{ url_for('home') }}" method="post">
+        <form id="researchTab" action="{{ url_for('home') }}" method="post">
             <select id="departement" name="departement">
                 <option value="tous">Tous</option>
                 {% set departments = [] %}
@@ -17,24 +17,12 @@
             </select>
             <button type="submit" value="Search">Search</button>
         </form>
-        <table>
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Service/Département</th>
-                <th>Numéro de bureau</th>
-                <th>Téléphone fixe</th>
-                <th>Téléphone mobile</th>
-                <th>Email</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="entrees">
             {% for personne in personnes %}
-                <tr>
-                    <td>{{ personne.lastName }}</td>
-                    <td>{{ personne.firstName }}</td>
-                    <td>
+                <div class="entree">
+                    <p>{{ personne.lastName }}</p>
+                    <p>{{ personne.firstName }}</p>
+                    <p>
                         {% set departments = [] %}
                         {% for departement in department %}
                             {% for dep in departement %}
@@ -43,15 +31,14 @@
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}
-                        {{ departments|join(', ') }}
-                    </td>
-                    <td>{{ personne.numBureau }}</td>
-                    <td>{{ personne.telFixe }}</td>
-                    <td>{{ personne.telMobile }}</td>
-                    <td>{{ personne.email }}</td>
-                </tr>
+                        Service/Département: {{ departments|join(', ') }}
+                    </p>
+                    <p>Num bureau: {{ personne.numBureau }}</p>
+                    <p>Mobile 1: {{ personne.telFixe }}</p>
+                    <p>Mobile 2: {{ personne.telMobile }}</p>
+                    <p>Email: {{ personne.email }}</p>
+                </div>
             {% endfor %}
-            </tbody>
-        </table>
+        </div>
     </div>
 {% endblock %}

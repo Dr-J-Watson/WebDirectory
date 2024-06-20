@@ -1,1 +1,258 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.entrees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.entree {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.24s;
+}
+
+.entree:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.entree ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: azure;
+    border: 1px solid #000;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilePic img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.profilePic .initiales {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.voir {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #ffff00;
+    transition: 0.24s;
+}
+
+.voir:hover {
+    cursor: pointer;
+    background-color: #ffcc00;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffff00;
+    border-bottom: 2px solid #000;
+    color: #000;
+}
+
+nav {
+    display: flex;
+    justify-content: left   ;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+}
+
+nav a{
+    color: #000;
+    margin: 10px;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+h1{
+    font-size: medium;
+}
+
+h2{
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+#contactList {
+    width: 100%;
+    display: flex;
+        flex-direction: column;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#contactList .contactTile:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#contactList h4{
+    margin: 0;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+
+}
+
+.contactTile{
+    padding: 20px;
+    background-color: #eee;
+    transition: 0.24s;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    text-align: left;
+}
+
+.contactTile:hover{
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.contactTile p{
+    margin: 0;
+
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.service{
+    margin: 0px 5px ;
+}
+
+.info{
+    padding: 10px;
+}
+
+main{
+    text-align: center;
+}
+
+form{
+    width: 30%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.24s;
+}
+
+form:hover{
+    scale: 1.025;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
+}
+
+form h2{
+    background-color: yellow;
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+form div{
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form button{
+    background-color: yellow;
+    padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: 0.24s;
+}
+
+form button:hover {
+    background-color: orange;
+}
+
+form label{
+    margin: 10px;
+}
+
+form input{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#researchTab{
+    width: 10%;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 0;
+}
+
+#researchTab button{
+    border-radius: 0;
+}
+
+button:hover{
+    cursor: pointer;
+}
+

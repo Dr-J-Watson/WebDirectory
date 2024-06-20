@@ -1,13 +1,14 @@
 {% extends "squelette.twig" %}
 {% block content %}
     <form action="{{ url_for('connexion') }}" method="post">
+        <h2>Connexion</h2>
         <div>
             <label for="username">Nom d'utilisateur</label>
-            <input type="text" id="username" name="email" required>
+            <input type="text" id="username" name="email" placeholder="Votre email" required>
         </div>
         <div>
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
         </div>
         <div>
             <button type="submit">Se connecter</button>

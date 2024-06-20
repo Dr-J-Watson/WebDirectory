@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     # les variables d'environnement
     env_file:
-      - ./.env
+      - ./sql.env
     ports:
       - "64990:3306"
     volumes:
@@ -51,8 +51,8 @@ services:
     ports:
       - "64992:80"
     volumes:
-      - ./appli/public:/var/www/html
-      - ./appli/src:/var/www/src
+      - ./WebDir.core/appli/public:/var/www/html
+      - ./WebDir.core/appli/src:/var/www/src
     networks:
       - webdir
     depends_on:
@@ -66,12 +66,25 @@ services:
     ports:
       - "64993:80"
     volumes:
-      - ./api/public:/var/www/html
-      - ./api/src:/var/www/src
+      - ./WebDir.core/api/public:/var/www/html
+      - ./WebDir.core/api/src:/var/www/src
     networks:
       - webdir
     depends_on:
       - db
+
+  #apache2
+  apache2:
+    image: ubuntu/apache2:latest
+    restart: unless-stopped
+    ports:
+      - "64994:80"
+    volumes:
+      - ./WebDir.web/:/var/www/html
+    networks:
+      - webdir
+    depends_on:
+      - php_api
 
 
   
