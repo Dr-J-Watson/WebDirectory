@@ -25,6 +25,6 @@ class GetAddUserForm extends AbstractAction
 
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'FormAddUser.twig', ['session' => $_SESSION['user']]);
+        return $view->render($rs, 'FormAddUser.twig');
     }
 }
