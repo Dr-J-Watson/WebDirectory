@@ -31,12 +31,12 @@
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}
-                        {{ departments|join(', ') }}
+                        Service/Département: {{ departments|join(', ') }}
                     </p>
-                    <p>{{ personne.numBureau }}</p>
-                    <p>{{ personne.telFixe }}</p>
-                    <p>{{ personne.telMobile }}</p>
-                    <p>{{ personne.email }}</p>
+                    <p>Num bureau: {{ personne.numBureau }}</p>
+                    <p>Mobile 1: {{ personne.telFixe }}</p>
+                    <p>Mobile 2: {{ personne.telMobile }}</p>
+                    <p>Email: {{ personne.email }}</p>
                 </div>
             {% endfor %}
         </div>
