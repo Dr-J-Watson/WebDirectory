@@ -16,6 +16,6 @@ class GetAddServiceForm extends AbstractAction
         }
         $view = Twig::fromRequest($rq);
 
-        return $view->render($rs, 'FormAddService.twig', ['session' => $_SESSION['user']]);
+        return $view->render($rs, 'FormAddService.twig');
     }
 }
