@@ -20,6 +20,8 @@ body{
 }
 
 .entree {
+    text-wrap: wrap;
+    overflow: hidden;
     border-radius: 20px;
     padding: 10px;
     border: 1px solid #000;
