@@ -5,7 +5,7 @@ namespace WebDir\core\appli\app\action;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use WebDir\core\appli\app\action\AbstractAction;
-use WebDir\core\appli\core\services\departement\ServicesService;
+use WebDir\core\appli\core\services\service\ServicesService;
 
 class PostAddService extends AbstractAction{
 
@@ -33,7 +33,7 @@ class PostAddService extends AbstractAction{
             ];
 
             $this->departementService->addDepartement($data);
-            return $rs->withStatus(302)->withHeader('Location', '/');
+            return $rs->withStatus(302)->withHeader('Location', '/home');
 
         }catch (\Exception $e){
             throw new \Exception($e->getMessage());
