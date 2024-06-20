@@ -2,7 +2,7 @@
 {% block content %}
     <div>
         <h1>Liste des personnes</h1>
-        <form action="{{ url_for('home') }}" method="post">
+        <form id="researchTab" action="{{ url_for('home') }}" method="post">
             <select id="departement" name="departement">
                 <option value="tous">Tous</option>
                 {% set departments = [] %}
