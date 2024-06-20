@@ -48,7 +48,7 @@ class PostAddEntree extends AbstractAction{
                 $uuid4 = Uuid::uuid4();
 
                 $uploadfile = $uploaddir . $uuid4->toString() . "." . $info->getExtension();
-                if($info->getExtension() !== 'png' || $info->getExtension() !== 'jpg' || $info->getExtension() !== 'jpeg'){
+                if($info->getExtension() !== 'png' and $info->getExtension() !== 'jpg' and $info->getExtension() !== 'jpeg'){
                     throw new \Exception("Erreur ce n'est pas une image");
                 }
 
