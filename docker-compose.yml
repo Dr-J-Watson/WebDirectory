@@ -51,8 +51,8 @@ services:
     ports:
       - "64992:80"
     volumes:
-      - ./appli/public:/var/www/html
-      - ./appli/src:/var/www/src
+      - ./WebDir.core/appli/public:/var/www/html
+      - ./WebDir.core/appli/src:/var/www/src
     networks:
       - webdir
     depends_on:
@@ -66,21 +66,21 @@ services:
     ports:
       - "64993:80"
     volumes:
-      - ./api/public:/var/www/html
-      - ./api/src:/var/www/src
+      - ./WebDir.core/api/public:/var/www/html
+      - ./WebDir.core/api/src:/var/www/src
     networks:
       - webdir
     depends_on:
       - db
 
-  #httpd
-  httpd:
-    image: httpd:latest
+  #apache2
+  apache2:
+    image: ubuntu/apache2:latest
     restart: unless-stopped
     ports:
       - "64994:80"
     volumes:
-      - ../WebDir.web/:/usr/local/apache2/htdocs
+      - ./WebDir.web/:/var/www/html
     networks:
       - webdir
     depends_on:
