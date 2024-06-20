@@ -68,6 +68,7 @@ class PostAddEntree extends AbstractAction{
                 'telFixe' => $personne['telFixe'],
                 'telMobile' => $personne['telMobile'],
                 'image' => $_FILES["image"]["error"] === 0 ? $image : '',
+                'fonction' => $personne['fonction']
             ];
 
 

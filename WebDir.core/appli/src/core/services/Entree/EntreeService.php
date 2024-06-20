@@ -15,6 +15,7 @@ class EntreeService implements EntreeServiceInterface{
         $newPersonne->telMobile = $personne['telMobile'];
         $newPersonne->email = $personne['email'];
         $newPersonne->image = $personne['image'];
+        $newPersonne->fonction = $personne['fonction'];
         $newPersonne->save();
 
 
