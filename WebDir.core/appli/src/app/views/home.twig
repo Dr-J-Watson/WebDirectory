@@ -17,24 +17,12 @@
             </select>
             <button type="submit" value="Search">Search</button>
         </form>
-        <table>
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Service/Département</th>
-                <th>Numéro de bureau</th>
-                <th>Téléphone fixe</th>
-                <th>Téléphone mobile</th>
-                <th>Email</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div id="contactList">
             {% for personne in personnes %}
-                <tr>
-                    <td>{{ personne.lastName }}</td>
-                    <td>{{ personne.firstName }}</td>
-                    <td>
+                <div class="contactTile">
+                    <p>{{ personne.lastName }}</p>
+                    <p>{{ personne.firstName }}</p>
+                    <p>
                         {% set departments = [] %}
                         {% for departement in department %}
                             {% for dep in departement %}
@@ -44,14 +32,13 @@
                             {% endfor %}
                         {% endfor %}
                         {{ departments|join(', ') }}
-                    </td>
-                    <td>{{ personne.numBureau }}</td>
-                    <td>{{ personne.telFixe }}</td>
-                    <td>{{ personne.telMobile }}</td>
-                    <td>{{ personne.email }}</td>
-                </tr>
+                    </p>
+                    <p>{{ personne.numBureau }}</p>
+                    <p>{{ personne.telFixe }}</p>
+                    <p>{{ personne.telMobile }}</p>
+                    <p>{{ personne.email }}</p>
+                </div>
             {% endfor %}
-            </tbody>
-        </table>
+        </div>
     </div>
 {% endblock %}
