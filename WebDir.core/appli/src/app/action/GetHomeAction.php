@@ -38,8 +38,9 @@ class GetHomeAction extends AbstractAction {
                     }
                 }
 
+                $session = $_SESSION['user'];
                 $view = Twig::fromRequest($rq);
-                return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'session' => $_SESSION['user']]);
+                return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments]);
             }
 
         }
@@ -58,6 +59,6 @@ class GetHomeAction extends AbstractAction {
         }
 
         $view = Twig::fromRequest($rq);
-        return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments, 'seesion' => $_SESSION['user']]);
+        return $view->render($rs, $this->template, ['personnes' => $personnes, 'department' => $departments]);
     }
 }

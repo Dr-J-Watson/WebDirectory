@@ -127,7 +127,7 @@ h2{
 #contactList {
     width: 100%;
     display: flex;
-    flex-direction: column;
+        flex-direction: column;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -238,13 +238,21 @@ form input{
 }
 
 #researchTab{
+    width: 10%;
+    display: flex;
     position: relative;
     flex-direction: row;
     align-items: center;
-    width: auto;
     justify-content: space-between;
+    padding: 10px;
+    border-radius: 0;
+}
+
+#researchTab button{
+    border-radius: 0;
 }
 
 button:hover{
     cursor: pointer;
 }
+

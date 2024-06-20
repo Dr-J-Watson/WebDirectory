@@ -4,6 +4,8 @@ namespace WebDir\core\appli\app\action;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Ramsey\Uuid\Uuid;
+use SplFileInfo;
 use WebDir\core\appli\app\action\AbstractAction;
 use WebDir\core\appli\core\services\Entree\EntreeService;
 use WebDir\core\appli\core\services\service\ServicesService;
@@ -40,14 +42,20 @@ class PostAddEntree extends AbstractAction{
                     $dep[] = $option;
                 }
             }
-
-            if(isset($personne['image'])){
+            if($_FILES["image"]["error"] === 0){
                 $uploaddir = __DIR__ . '/../../../html/assets/image/';
-                $uploadfile = $uploaddir . basename($_FILES['image']['name']);
+                $info = new SplFileInfo(basename($_FILES['image']['name']));
+                $uuid4 = Uuid::uuid4();
+
+                $uploadfile = $uploaddir . $uuid4->toString() . "." . $info->getExtension();
+                if($info->getExtension() !== 'png' || $info->getExtension() !== 'jpg' || $info->getExtension() !== 'jpeg'){
+                    throw new \Exception("Erreur ce n'est pas une image");
+                }
+
                 if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
                     throw new \Exception("Erreur load image");
                 }
-                $personne['image'] = basename($_FILES['image']['name']);
+                $image = $uuid4->toString() . "." . $info->getExtension();
             }
 
 
@@ -58,7 +66,7 @@ class PostAddEntree extends AbstractAction{
                 'email' => $personne['email'],
                 'telFixe' => $personne['telFixe'],
                 'telMobile' => $personne['telMobile'],
-                'image' => isset($personne['image']) ? $personne['image'] : '',
+                'image' => $_FILES["image"]["error"] === 0 ? $image : '',
             ];
 
 
