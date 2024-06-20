@@ -2,7 +2,7 @@
 
 Disponible sur l'url : http://docketu.iutnc.univ-lorraine.fr:64993 `+ routes`
 
-Avec les routes posssible, suivantes :
+Avec les routes possible, suivantes :
 ### - '/api/services[/]'
     - route pour avoir la liste des services
 
