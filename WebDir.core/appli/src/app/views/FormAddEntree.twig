@@ -4,12 +4,12 @@
     <form action="{{ url_for('addPersonnePost') }}" method="post" enctype="multipart/form-data">
         <div>
             <label for="lastName">Nom</label>
-            <input type="text" id="lastName" name="lastName" value="">
+            <input type="text" id="lastName" name="lastName" value="" required>
         </div>
 
         <div>
             <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" name="firstName" value="">
+            <input type="text" id="firstName" name="firstName" value="" required>
         </div>
 
         <div>
@@ -34,7 +34,7 @@
 
         <div>
             <label for="departement">Service / Departement</label>
-            <select id="departement" name="departement[]" multiple="yes">
+            <select id="departement" name="departement[]" multiple="yes" required>
                 {% for dep in department %}
                     <option value="{{ dep['nom'] }}"> {{ dep['nom'] }}</option>
                 {% endfor %}
@@ -42,7 +42,7 @@
         </div>
         <div>
             <label for="fonction">Fonction</label>
-            <input type="text" id="fonction" name="fonction" value="">
+            <input type="text" id="fonction" name="fonction" value="" required>
         </div>
 
         <div>
