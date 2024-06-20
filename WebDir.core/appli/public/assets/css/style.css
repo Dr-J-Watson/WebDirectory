@@ -187,10 +187,17 @@ main{
 
 form{
     width: 30%;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     text-align: center;
+    transition: 0.24s;
+}
+
+form:hover{
+    scale: 1.025;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
 }
 
 form h2{
@@ -236,4 +243,8 @@ form input{
     align-items: center;
     width: auto;
     justify-content: space-between;
+}
+
+button:hover{
+    cursor: pointer;
 }
