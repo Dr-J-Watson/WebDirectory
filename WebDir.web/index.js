@@ -39,7 +39,7 @@ function getServiceSearchEntrees(url, tri="Aucun tri de service"){
     loader_default.loadServiceSearchEntrees(url)
     .then(data => {
         data.json().then(async data => {
-            await searchEntrees_ui.displaySearchEntrees(data, tri);
+            await searchEntrees_ui.displaySearchEntrees(data.entrees, tri);
             addEvent();
         });
     });
